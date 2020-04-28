@@ -1,0 +1,62 @@
+:sectnums:
+include::global.adoc[]
+
+
+=== Initial Ansible Lab Setup
+The initial command line portion of the lab will be executed from a bastion host in the lab environment.
+To set up the labs you will need to ssh into `{jumphost}` and execue the lab setup command.
+
+
+[source,bash]
+[subs="verbatim,attributes"]
+----
+> ssh siduser###@jump.mysidlabs.com
+Warning: Permanently added 'jump.mysidlabs.com,3.132.28.93' (ECDSA) to the list of know hosts.
+Password: 
+
+Last login: Mon Apr 27 12:42:17 2020 from 3.132.28.93
+Cloning into '/home/siduser298/dev/k8s-demo'...
+...
+... OUTPUT TRUNCATED
+...
+Unpacking objects: 100% (35/35), done.
+
+Welcome to the Sirius Immersion Days Lab Environment
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+To start the Red Hat OpenShift environment:
+
+     lab ocp
+
+To start the Red Hat Ansible environment:
+
+     lab ansible
+
+{prompt}
+----
+and then execute the `lab ansible` command as shown below.
+[source,bash]
+[subs="verbatim,attributes"]
+----
+{prompt} lab ansible
+----
+
+This will create the following directory structure in your /home/{userid} directory:
+[source,bash]
+[subs="verbatim,attributes"]
+----
+{prompt} tree -L 2
+.
+└── dev
+    ├── ansible
+    ├── ansible-network-labs
+    ├── cpuhog
+    └── k8s-demo
+
+5 directories, 0 files
+----
+
+You are now ready to begin lab 1.
+
+
+

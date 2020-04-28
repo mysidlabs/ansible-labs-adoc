@@ -1,0 +1,5 @@
+//Attributes
+:userid: siduser298
+:jumphost: jump.mysidlabs.com
+:jumphostname: jump
+:prompt: {userid}@{jumphostname}:~$ 

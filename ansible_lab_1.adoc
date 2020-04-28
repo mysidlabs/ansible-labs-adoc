@@ -1,0 +1,117 @@
+include::global.adoc[]
+
+=== Ansible Lab 2 - Repeat in Tower
+==== Overview
+This is a quick lab meant to be run from the command line.
+You will perform the following tasks in the course of this excercise:
+
+. Provision an AWS ec2 instance
+. Minimaly configure the instance once it has been provisioned.
+. Log into the instance once configuration is complete to take a look around.
+. Clean up, deprovisioning the instance once the lab is complete.
+
+==== Lab 1
+. Begin with a `cd` into the `dev/ansible-labs/lab1` directory and review it's contents.
++
+[source,bash]
+[subs="verbatim,attributes"]
+----
+{prompt} tree
+lab1
+├── ansible.cfg
+├── clean.yaml
+├── configure.yaml
+├── create.yaml
+├── group_vars
+│   └── all.yaml
+└── login
+----
+* *ansible.cfg* - this is a local ansible config file which overrides some aspects of the global  `/etc/ansible/ansible.cfg` file.
++
+[source,cfg]
+----
+include::src/ansible-labs/lab1/ansible.cfg[]
+----
+* *group_vars/all.yaml* - this file defines variables that can be applied against groups defined in the inventory.
+In this case the filename _all.yaml_ represents the special _Ansible_ defined group `*_all_*` which will affect every host in the inventory.
+Group variable provide a method to cross-cut concerns when provisioning infrastructure.
+More information on inventory, host, and group variables can be found https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html[here].
++
+[source,yaml]
+----
+include::src/ansible-labs/lab1/group_vars/all.yaml[]
+----
+* *create.yaml* - this is a simple _Ansible_ playbook that creates an AWS ec2 instance and then dynamically creates an inventory file, inv.txt with the newly created host as the only entry.  Also note that the the target host for this play is *_localhost_*.
++
+[source,yaml]
+----
+include::src/ansible-labs/lab1/create.yaml[]
+----
+* *configure.yaml* - this play configures the host. It creates a user account, distributes an ssh-key, and then installs a few basic packages.
++
+[source,yaml]
+----
+include::src/ansible-labs/lab1/configure.yaml[]
+----
+
+
+
+. After reviewing the files we want to begin by executing the intial play defined in _create.yaml_.
++
+[source,bash]
+[subs="verbatim,attributes"]
+----
+{prompt} ansible-playbook create.yaml
+----
++
+If the play is successful you will see output as the playbook executes ending with something similar to the following:
++
+[source,ansible]
+----
+...
+
+TASK [debug] ******************************************************************************************************
+ok: [localhost] => {
+    "msg": "siduser298-lab1 == Private IP: 172.31.36.33, Public IP: 18.189.29.52"
+}
+
+PLAY RECAP ******************************************************************************************************
+localhost                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+----
++
+The debug statement returns the public and private IPs of the newly created host which has also been written to the inv.txt local inventory file mentioned above.
+
+. Now that the host is available the _configure.yaml_ play can be run to make the instance slightly more useful.
+Execute the _configure.yaml_ play with the following command using the `-i` flag to specify the _inv.txt_ as the inventory source for this _Ansible_ run:
++
+[source,bash]
+[subs="verbatim,attributes"]
+----
+{prompt} ansible-playbook configure.yaml -i inv.txt
+----
++
+It may be possible that not all tasks complete successfully. In this case you may see output like the following:
++
+[source,ansible]
+[subs="verbatim,attributes"]
+----
+TASK [Install a few sample packages] ****************************************************************************
+fatal: [ec2-13-58-174-200.us-east-2.compute.amazonaws.com]: FAILED! => {"changed": false, "msg": "No package matching 'cowsay' found available, installed or updated", "rc": 126, "results": ["No package matching 'cowsay' found available, installed or updated"]}
+
+PLAY RECAP ****************************************************************************
+ec2-13-58-174-200.us-east-2.compute.amazonaws.com : ok=3    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+----
+In this example we can see that 3 tasks were executed, 2 were sucessful, and 1 failed.
+The output for the _Install a few sample packages_ task shows that there was no Cowsay package available for that host.
+
+. Now connect to the host by executing the _login_ shell script in the lab1 directory.
++
+[source,bash]
+[subs="verbatim,attributes"]
+----
+{prompt} ./login
+----
+
+
+. Finally, run the _clean.yaml_ play to destroy the ec2 instances and clean
+

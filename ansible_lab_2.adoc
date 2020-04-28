@@ -1,0 +1,13 @@
+include::global.adoc[]
+
+=== Ansible Lab 1 - Command Line Example
+==== Overview
+Lab 2 is basically a repeat of the activities of Lab 1.
+However, this time we will be configuring and executing the plays via _Ansible Tower_.
+
+. Take a quick tour of _Ansible Tower_.
+. Provision an AWS ec2 instance.
+. Minimaly configure the instance once it has been provisioned.
+. Log into the instance once configuration is complete to take a look around.
+. Clean up, deprovisioning the instance once the lab is complete.
+
