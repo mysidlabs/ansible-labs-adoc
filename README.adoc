@@ -1,0 +1,6 @@
+== Ansible Immersion Days User Documentation
+This documentation contains references to the source files located in the _ansible-labs_ project. To correctly build this documentation:
+
+. Clone this project.
+. `cd` into the src directory.
+. Clone the _ansible-labs_ project.
