@@ -102,12 +102,45 @@ Please doublecheck the _Regions_ and _Instance Filters_ values, as both fields a
 image::images/lab2_000008_source_form.png[]
 
 
-. *Create the Job Templates*
+. *Create and Configure the Create Job Template*
 +
-In this portion of the lab, we will be creating _Job Templates_ to represent the Ansible plays in the lab repository. Begin by navigating to the Templates module.
+In this portion of the lab, we will be creating _Job Templates_ to represent the Ansible plays in the lab repository. We'll begin with creating a _Job Template_ for the _create.yaml_ play in the lab2 folder.
 +
-.. Begin by creating a template for the _create.yaml_ play.
-Click the icon:new[] icon and select _Job Template_ from the pop-up.
+.. Click the icon:new[] icon and select _Job Template_ as the template type from the initial pop-up.
+.. Populate the _New Job Template_ fields with the following values:
+* *Name*: use `siduser\#\##-create`,  where \### is replaced with your user number.
+* *Job Type*: `Run`
+* *Inventory*: `localhost-inventory`.
++
+[NOTE]
+====
+In Ansible, when connecting to an external API, especially in the creation of infrastructure, the play is run and executed on the localhost.  `localhost-inventory` represents the _Tower_ localhost when running plays such as this.
+====
+* *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
+* *PlaybooK*: `lab2/create.yaml`
+* *Credentials*: Click icon:search[] in the _Credentials_ field and then choose `Amazon Web Services` for the _Credential Type_ and then select `aws-api` and then click icon:select-button[]
++
+image::images/lab2_000009_template_credentials.png[]
++
+* *Instance Groups*: select `Tower`
+* *Extra Variables*: In the extra variable field, please add the following, verbatim:
++
+`siduser: "{{ tower_user_name}}"`
++
+image::images/lab2_000010_extra_variables.png[]
++
+[WARNING]
+====
+Please double check that the extra-variables syntax is correct before saving the template.
+====
+.. Click the icon:save[] button to save the template.
+
+
+. *Create and Configure the Configure Job Template*
++
+We'll now create the _Job Template_ for the _configure.yaml_ play from lab2.  This process is very similar to the previous step with the exception that this time we will specify our user _dynamic_ inventory.
++
+.. Click the icon:new[] icon and select _Job Template_ from the pop-up.
 .. Populate the _New Job Template_ fields with the following values:
 * *Name*: use `siduser\#\##-create`,  where \### is replaced with your user number.
 * *Job Type*: `Run`
@@ -129,5 +162,4 @@ image::images/lab2_000010_extra_variables.png[]
 ====
 Please double check that the extra-variables syntax is correct before saving the template.
 ====
-.. Click the icon:save[]] button to save the template.
- 
+.. Click the icon:save[] button to save the template.

@@ -5,7 +5,7 @@ include::global.adoc[]
 This is a quick lab meant to be run from the command line.
 You will perform the following tasks in the course of this excercise:
 
-. Provision an AWS ec2 instance
+. Provision an AWS EC2 instance
 . Minimaly configure the instance once it has been provisioned.
 . Log into the instance once configuration is complete to take a look around.
 . Clean up, deprovisioning the instance once the lab is complete.
