@@ -1,5 +1,7 @@
 //Attributes
 :userid: siduser298
+:userpassword: Passw0rd0420!
 :jumphost: jump.mysidlabs.com
 :jumphostname: jump
 :prompt: {userid}@{jumphostname}:~$ 
+:icons:

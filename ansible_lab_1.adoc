@@ -1,6 +1,6 @@
 include::global.adoc[]
 
-=== Ansible Lab 2 - Repeat in Tower
+=== Ansible Lab 1 - Ansible Command Line
 ==== Overview
 This is a quick lab meant to be run from the command line.
 You will perform the following tasks in the course of this excercise:
@@ -11,7 +11,18 @@ You will perform the following tasks in the course of this excercise:
 . Clean up, deprovisioning the instance once the lab is complete.
 
 ==== Lab 1
-. Begin with a `cd` into the `dev/ansible-labs/lab1` directory and review it's contents.
+. The lab will be run from a bastion host in AWS. Begin by SSHing to the jump host with the command:
++
+[source,bash]
+[subs="verbatim,attributes"]
+----
+{prompt} ssh <siduser###>@jump.mysidlabs.com 
+----
++
+Where `<siduser###>` is the user id provided by your instructor and using the password `{userpassword}`.
+
+
+. Once connected, `cd` into the `dev/ansible-labs/lab1` directory and review it's contents.
 +
 [source,bash]
 [subs="verbatim,attributes"]
