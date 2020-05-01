@@ -38,7 +38,7 @@ Populate the _New Project_ form with the following information:
 .. *Name* - `siduser\#\##-repo` where \### is replaced with your user number.
 .. *Organization* - `sid-org`
 +
-[IMPORTANT]
+[WARNING]
 ====
 Make sure  *`sid-org`* is the organization used for all of the excercises in these labs.
 ====
@@ -88,7 +88,7 @@ This will cascade-populate the Credential box with valid credential options for 
 * *Regions* - Select `US East (Ohio)`
 * *Instance Filters* - _verbatim_ `tag:mysidlabs_owner=sinduser###`
 +
-[IMPORTANT]
+[WARNING]
 ====
 Please doublecheck the _Regions_ and _Instance Filters_ values, as both fields are *critical* for the deployment and clean-up of the lab infrastructure.
 ====
@@ -104,4 +104,30 @@ image::images/lab2_000008_source_form.png[]
 
 . *Create the Job Templates*
 +
-In this portion of the lab, we will be creating _Job Templates_ to represent the Ansible plays in the lab repository. Begin by navigating to the Templates module 
+In this portion of the lab, we will be creating _Job Templates_ to represent the Ansible plays in the lab repository. Begin by navigating to the Templates module.
++
+.. Begin by creating a template for the _create.yaml_ play.
+Click the icon:new[] icon and select _Job Template_ from the pop-up.
+.. Populate the _New Job Template_ fields with the following values:
+* *Name*: use `siduser\#\##-create`,  where \### is replaced with your user number.
+* *Job Type*: `Run`
+* *Inventory*: `siduser\#\##-inventory`  where \### is replaced with your user number.
+* *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
+* *PlaybooK*: `lab2/create.yaml`
+* *Credentials*: Click icon:search[] in the _Credentials_ field and then choose `Amazon Web Services` for the _Credential Type_ and then select `aws-api` and then click icon:select-button[]
++
+image::images/lab2_000009_template_credentials.png[]
++
+* *Instance Groups*: select `Tower`
+* *Extra Variables*: In the extra variable field, please add the following, verbatim:
++
+`siduser: "{{ tower_user_name}}"`
++
+image::images/lab2_000010_extra_variables.png[]
++
+[WARNING]
+====
+Please double check that the extra-variables syntax is correct before saving the template.
+====
+.. Click the icon:save[]] button to save the template.
+ 
