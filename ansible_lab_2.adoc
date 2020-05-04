@@ -1,24 +1,11 @@
 include::global.adoc[]
-= GitHub Flavored Asciidoc (GFA)
 ifdef::env-github[]
-
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
+:imagesdir: https://github.com/mysidlabs/ansible-labs-adoc/blob/master
+endif::[]
 
 :imagesdir: images/
-:userid: siduser###
-:userpassword: Passw0rd0420!
-:jumphost: jump.mysidlabs.com
-:jumphostname: jump
-:prompt: {userid}@{jumphostname}:~$ 
 :icons:
 
-endif::[]
-:toc:
-:toc-placement!:
 
 === Ansible Lab 2 - Introduction to Ansible Tower
 ==== Overview
@@ -35,7 +22,7 @@ In Lab 2 will introduce _Ansible Tower_ and walk through the configuration of a 
 . Once you are logged into your account, fork the following repository to your personal account:
 * https://github.com/mysidlabs/ansible-labs
 +
-image::images/lab2_000001_github_fork.png[50%]
+image::lab2_000001_github_fork.png[50%]
 . Begin the lab.
 
 ==== Lab 2 - Ansible Tower
@@ -43,15 +30,15 @@ image::images/lab2_000001_github_fork.png[50%]
 . Take a quick tour of _Tower_ and the features that will be used for this lab.
 * *Dashboard* - this is the landing page and provides a bird's eye view of the number of hosts, inventories, and projects being managed as well as a graphic history of recently executed jobs and templates.
 +
-image::images/lab2_000002_tower_dashboard.png[]
+image::lab2_000002_tower_dashboard.png[]
 * *Projects* - 
 
 // Create Project
 . *Create a Project*
 +
-Begin by creating a new project by clicking the icon:new[] icon.
+Begin by creating a new project by clicking the image:icons/new.png[] icon.
 +
-image::images/lab2_000003_create_project.png[]
+image::lab2_000003_create_project.png[]
 +
 Populate the _New Project_ form with the following information:
 +
@@ -69,18 +56,18 @@ Make sure  *`sid-org`* is the organization used for all of the excercises in the
 ** Clean
 ** Delete on Update
 ** Update Revision on Launch
-.. Click the icon:save[] button - your newly created project will be added to the project list at the bottom of the page.
+.. Click the image:icons/save-button.png[] button - your newly created project will be added to the project list at the bottom of the page.
 +
-image::images/lab2_000004_project_form.png[]
+image::lab2_000004_project_form.png[]
 
 //Create Inventory
 . *Create an Inventory*
 + 
 In this step, we will configure a dynamic inventory  by leveraging the Amazon Web Services api together with the judicious use of ec2 host tags.
 +
-.. Begin by navigating to the _Inventories_ page and create a new inventory by clicking the icon:new[] icon.
+.. Begin by navigating to the _Inventories_ page and create a new inventory by clicking the image:icons/new.png[] icon.
 +
-image::images/lab2_000005_new_inventory.png[]
+image::lab2_000005_new_inventory.png[]
 +
 .. Populate the _New Inventory_ form with the following details:
 +
@@ -89,7 +76,7 @@ image::images/lab2_000005_new_inventory.png[]
 +
 .. Click the icon:save[] button. - your newly created inventory will be added to the inventory list at the bottom of the page.
 +
-image::images/lab2_000006_new_inventory_form.png[]
+image::lab2_000006_new_inventory_form.png[]
 
 // Inventory Source
 . *Configure an Inventory Source*
@@ -98,7 +85,7 @@ In this step we will configure a source for the newly defined inventory.
 +
 .. Click the icon:sources-button[] button/tab and then click the icon:new[] icon to open the source creation form.
 +
-image::images/lab2_000007_new_inventory_source.png[]
+image::lab2_000007_new_inventory_source.png[]
 +
 .. Populate the _Inventory Source_ form with the following details:
 * *Name* - `siduser\#\##-aws-source` where \### is replaced with your user number.
@@ -119,7 +106,7 @@ Please doublecheck the _Regions_ and _Instance Filters_ values, as both fields a
 ** Update on Launch
 .. Click the icon:save[] button and the source will be added to the sources list at the bottom of the page.
 +
-image::images/lab2_000008_source_form.png[]
+image::lab2_000008_source_form.png[]
 
 
 // Create Job Template
@@ -141,14 +128,14 @@ In Ansible, when connecting to an external API, especially in the creation of in
 * *PlaybooK*: `lab2/create.yaml`
 * *Credentials*: Click icon:search[] in the _Credentials_ field, select `Amazon Web Services` for the _Credential Type_, and then select `aws-api` and then click icon:select-button[]
 +
-image::images/lab2_000009_template_credentials.png[]
+image::lab2_000009_template_credentials.png[]
 +
 * *Instance Groups*: select `Tower`
 * *Extra Variables*: In the extra variable field, please add the following, verbatim:
 +
 `siduser: "{{ tower_user_name}}"`
 +
-image::images/lab2_000010_extra_variables.png[]
+image::lab2_000010_extra_variables.png[]
 +
 [WARNING]
 ====
@@ -160,7 +147,7 @@ Please double check that the extra-variables syntax is correct before saving the
 .. Click the icon:launch-button[] button to execute the job.
 * when the job has completed review the output at the bottom of the page.
 +
-image::images/lab2_create_job_output.png[]
+image::lab2_create_job_output.png[]
 +
 * 
 Notice that this output is the same output genrated by command line execution.
@@ -181,14 +168,14 @@ We'll now create the _Job Template_ for the _configure.yaml_ play from lab2.  Th
 * *PlaybooK*: `lab2/configure.yaml`
 * *Credentials*: Click icon:search[] in the _Credentials_ field and then choose `Machine` for the _Credential Type_ and then select `ansible-labs-only` and then click icon:select-button[]
 +
-image::images/lab2_000009_template_credentials.png[]
+image::lab2_000009_template_credentials.png[]
 +
 * *Instance Groups*: select `Tower`
 * *Extra Variables*: In the extra variable field, please add the following, verbatim:
 +
 `siduser: "{{ tower_user_name}}"`
 +
-image::images/lab2_000010_extra_variables.png[]
+image::lab2_000010_extra_variables.png[]
 +
 [WARNING]
 ====
@@ -215,14 +202,14 @@ The final step of the lab 2 is to create the _clean.yaml_ template and then run 
 * *PlaybooK*: `lab2/clean.yaml`
 * *Credentials*: Click icon:search[] in the _Credentials_ field and then choose `Amazon Web Services` for the _Credential Type_ and then select `aws-api` and then click icon:select-button[]
 +
-image::images/lab2_000009_template_credentials.png[]
+image::lab2_000009_template_credentials.png[]
 +
 * *Instance Groups*: select `Tower`
 * *Extra Variables*: In the extra variable field, please add the following, verbatim:
 +
 `siduser: "{{ tower_user_name}}"`
 +
-image::images/lab2_000010_extra_variables.png[]
+image::lab2_000010_extra_variables.png[]
 +
 [WARNING]
 ====
