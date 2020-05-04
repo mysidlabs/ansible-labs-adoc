@@ -33,7 +33,6 @@ image::images/lab3_001_new_workflow_template.png[]
 . Click the icon:save[] button and then launch the _Workflow Visualizer_.
 
 
-
 . *Create and Configure the Create Job Template*
 +
 In this portion of the lab, we will be creating _Job Templates_ to represent the Ansible plays in the lab repository. We'll begin with creating a _Job Template_ for the _create.yaml_ play in the lab2 folder.

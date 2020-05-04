@@ -26,7 +26,7 @@ image::images/lab2_000001_github_fork.png[50%]
 image::images/lab2_000002_tower_dashboard.png[]
 * *Projects* - 
 
-
+// Create Project
 . *Create a Project*
 +
 Begin by creating a new project by clicking the icon:new[] icon.
@@ -53,7 +53,7 @@ Make sure  *`sid-org`* is the organization used for all of the excercises in the
 +
 image::images/lab2_000004_project_form.png[]
 
-
+//Create Inventory
 . *Create an Inventory*
 + 
 In this step, we will configure a dynamic inventory  by leveraging the Amazon Web Services api together with the judicious use of ec2 host tags.
@@ -71,7 +71,7 @@ image::images/lab2_000005_new_inventory.png[]
 +
 image::images/lab2_000006_new_inventory_form.png[]
 
-
+// Inventory Source
 . *Configure an Inventory Source*
 +
 In this step we will configure a source for the newly defined inventory.
@@ -102,7 +102,8 @@ Please doublecheck the _Regions_ and _Instance Filters_ values, as both fields a
 image::images/lab2_000008_source_form.png[]
 
 
-. *Create and Configure the Create Job Template*
+// Create Job Template
+. *Create and Configure the _Create_ Job Template*
 +
 In this portion of the lab, we will be creating _Job Templates_ to represent the Ansible plays in the lab repository. We'll begin with creating a _Job Template_ for the _create.yaml_ play in the lab2 folder.
 +
@@ -118,7 +119,7 @@ In Ansible, when connecting to an external API, especially in the creation of in
 ====
 * *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
 * *PlaybooK*: `lab2/create.yaml`
-* *Credentials*: Click icon:search[] in the _Credentials_ field and then choose `Amazon Web Services` for the _Credential Type_ and then select `aws-api` and then click icon:select-button[]
+* *Credentials*: Click icon:search[] in the _Credentials_ field, select `Amazon Web Services` for the _Credential Type_, and then select `aws-api` and then click icon:select-button[]
 +
 image::images/lab2_000009_template_credentials.png[]
 +
@@ -136,11 +137,18 @@ Please double check that the extra-variables syntax is correct before saving the
 .. Click the icon:save[] button to save the template.
 
 .. icon:todo[] - Insert screenshot of completed template form.
-.. icon:todo[] - Run the job template and review the log output.
+.. Click the icon:launch-button[] button to execute the job.
+* when the job has completed review the output at the bottom of the page.
++
+image::images/lab2_create_job_output.png[]
++
+* 
+Notice that this output is the same output genrated by command line execution.
 .. icon:todo[] - Review the dynamic inventory once the job has completed.
 
 
-. *Create and Configure the Configure Job Template*
+// Configure Job Template
+. *Create and Configure the _Configure_ Job Template*
 +
 We'll now create the _Job Template_ for the _configure.yaml_ play from lab2.  This process is very similar to the previous step with the exception that this time we will specify our user _dynamic_ inventory.
 +
@@ -172,6 +180,8 @@ Please double check that the extra-variables syntax is correct before saving the
 .. icon:todo[] Execute the job template and review the log output.
 .. icon:todo[] grab lb ip from output and visit the web-app in a browser.
 
+
+// Clean Job Template
 . *Create and Configure the Clean Job Template*
 +
 The final step of the lab 2 is to create the _clean.yaml_ template and then run the job which will decommision the infrastructure we spun up during the create play.

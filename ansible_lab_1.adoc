@@ -1,4 +1,12 @@
 include::global.adoc[]
+//Attributes
+:userid: siduser###
+:userpassword: Passw0rd0420!
+:jumphost: jump.mysidlabs.com
+:jumphostname: jump
+:prompt: {userid}@{jumphostname}:~$ 
+:icons:
+
 
 === Ansible Lab 1 - Ansible Command Line
 ==== Overview
