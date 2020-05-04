@@ -1,6 +1,6 @@
 include::global.adoc[]
 
-=== Ansible Lab 1 - Introduction to Ansible Tower
+=== Ansible Lab 2 - Introduction to Ansible Tower
 ==== Overview
 In Lab 2 will introduce _Ansible Tower_ and walk through the configuration of a simple project.  This project will deploy and configure a simple web-application behind a load balancer. 
 
