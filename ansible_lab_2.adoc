@@ -8,7 +8,7 @@ ifdef::env-github[]
 :caution-caption: :fire:
 :warning-caption: :warning:
 
-:imagesdir: images/
+:imagesdir: ./images/
 :userid: siduser###
 :userpassword: Passw0rd0420!
 :jumphost: jump.mysidlabs.com
