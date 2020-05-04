@@ -2,104 +2,36 @@ include::global.adoc[]
 
 === Ansible Lab 3 - Introduction to Ansible Tower Workflows
 ==== Overview
-In Lab 2 will introduce _Ansible Tower_ and walk through the configuration of a simple project.  This project will deploy and configure a simple web-application behind a load balancer. 
+Lab 3 introduces _Ansible Tower_ template workflows. In this excerxise you will 
 
-. Take a quick tour of _Ansible Tower_.
-. Provision an AWS ec2 instance.
-. Minimaly configure the instance once it has been provisioned.
-. Log into the instance once configuration is complete to take a look around.
-. Clean up, deprovisioning the instance once the lab is complete.
+. Create the _wait_for_ssh_ auxillary job template.
+. Create a workflow template that combines the plays from the previous lab into a single, executable job run.
 
 ==== Prerequisites
 . You will need a https://https://github.com/[GitHub] account in order to complete this lab.
 . Once you are logged into your account, fork the following repository to your personal account:
 * https://github.com/mysidlabs/ansible-labs
-+
-image::images/lab2_000001_github_fork.png[50%]
-. Begin the lab.
 
-==== Lab 2 - Ansible Tower
++
+[NOTE]
+====
+These pre-requisites should have already been completed in preparation for lab 2.
+For more detailed instructions, please see the walkthrough for that lab.
+====
+
+==== Lab 3 - Ansible Tower Workflows
 . Log into https://tower.mysidlabs.com[tower]  (tower.mysidlabs.com)
-. Take a quick tour of _Tower_ and the features that will be used for this lab.
-* *Dashboard* - this is the landing page and provides a bird's eye view of the number of hosts, inventories, and projects being managed as well as a graphic history of recently executed jobs and templates.
+. Navigate to the _Templates_ page.
+. Click the icon:new[] button to create a new template, this time selecting *_Workflow Template_* from the pop-up.
+. Populate the _New Workflow Job Template_ with the following details:
+.. *Name*: `siduser\###-lab3-workflow`
+.. *Organization*: `sid-org`
+.. *Inventory*: `siduser\###-inventory`
 +
-image::images/lab2_000002_tower_dashboard.png[]
-* *Projects* - 
+image::images/lab3_001_new_workflow_template.png[]
++
+. Click the icon:save[] button and then launch the _Workflow Visualizer_.
 
-
-. *Create a Project*
-+
-Begin by creating a new project by clicking the icon:new[] icon.
-+
-image::images/lab2_000003_create_project.png[]
-+
-Populate the _New Project_ form with the following information:
-+
-.. *Name* - `siduser\#\##-repo` where \### is replaced with your user number.
-.. *Organization* - `sid-org`
-+
-[WARNING]
-====
-Make sure  *`sid-org`* is the organization used for all of the excercises in these labs.
-====
-+
-.. *SCM Type* - `git` - this project will be using the lab repository that was forked as a pre-req to this lab.
-.. *SCM URL* - use the https version of the git url. *e.g.* `https:\\github.com\demo-user\ansible-labs.git`.
-.. *SCM Update Options* - Select the following options:
-** Clean
-** Delete on Update
-** Update Revision on Launch
-.. Click the icon:save[] button - your newly created project will be added to the project list at the bottom of the page.
-+
-image::images/lab2_000004_project_form.png[]
-
-
-. *Create an Inventory*
-+ 
-In this step, we will configure a dynamic inventory  by leveraging the Amazon Web Services api together with the judicious use of ec2 host tags.
-+
-.. Begin by navigating to the _Inventories_ page and create a new inventory by clicking the icon:new[] icon.
-+
-image::images/lab2_000005_new_inventory.png[]
-+
-.. Populate the _New Inventory_ form with the following details:
-+
-* *Name* - `siduser\#\##-inventory` where \### is replaced with your user number.
-* *Organization* - `sid-org`
-+
-.. Click the icon:save[] button. - your newly created inventory will be added to the inventory list at the bottom of the page.
-+
-image::images/lab2_000006_new_inventory_form.png[]
-
-
-. *Configure an Inventory Source*
-+
-In this step we will configure a source for the newly defined inventory.
-+
-.. Click the icon:sources-button[] button/tab and then click the icon:new[] icon to open the source creation form.
-+
-image::images/lab2_000007_new_inventory_source.png[]
-+
-.. Populate the _Inventory Source_ form with the following details:
-* *Name* - `siduser\#\##-aws-source` where \### is replaced with your user number.
-* *Source* - select `Amazon EC2` from the option list.
-This will cascade-populate the Credential box with valid credential options for the selected source.
-* *Credential* - click the icon:search[] icon and then select `aws-api` from the resulting pop-up.
-* *Regions* - Select `US East (Ohio)`
-* *Instance Filters* - _verbatim_ `tag:mysidlabs_owner=sinduser###`
-+
-[WARNING]
-====
-Please doublecheck the _Regions_ and _Instance Filters_ values, as both fields are *critical* for the deployment and clean-up of the lab infrastructure.
-====
-+
-* *Only Group By* - select `Tags`
-* *Update Options* - Select:
-** Overwrite
-** Update on Launch
-.. Click the icon:save[] button and the source will be added to the sources list at the bottom of the page.
-+
-image::images/lab2_000008_source_form.png[]
 
 
 . *Create and Configure the Create Job Template*
