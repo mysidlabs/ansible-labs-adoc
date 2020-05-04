@@ -1,5 +1,5 @@
 ifdef::env-github[]
-:imagesdir: https://github.com/mysidlabs/ansible-labs-adoc/blob/master/images
+:imagesdir: https://github.com/mysidlabs/ansible-labs-adoc/blob/master
 endif::[]
 
 
