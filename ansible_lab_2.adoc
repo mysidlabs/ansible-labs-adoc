@@ -134,7 +134,8 @@ image::images/lab2_000010_extra_variables.png[]
 Please double check that the extra-variables syntax is correct before saving the template.
 ====
 .. Click the icon:save[] button to save the template.
-+
+
+.. icon:todo[] - Insert screenshot of completed template form.
 .. icon:todo[] - Run the job template and review the log output.
 .. icon:todo[] - Review the dynamic inventory once the job has completed.
 
@@ -149,7 +150,7 @@ We'll now create the _Job Template_ for the _configure.yaml_ play from lab2.  Th
 * *Job Type*: `Run`
 * *Inventory*: `siduser\#\##-inventory`  where \### is replaced with your user number.
 * *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
-* *PlaybooK*: `lab2/create.yaml`
+* *PlaybooK*: `lab2/configure.yaml`
 * *Credentials*: Click icon:search[] in the _Credentials_ field and then choose `Machine` for the _Credential Type_ and then select `ansible-labs-only` and then click icon:select-button[]
 +
 image::images/lab2_000009_template_credentials.png[]
@@ -166,5 +167,38 @@ image::images/lab2_000010_extra_variables.png[]
 Please double check that the extra-variables syntax is correct before saving the template.
 ====
 .. Click the icon:save[] button to save the template.
+
+.. icon:todo[] - Insert screenshot of completed template form.
 .. icon:todo[] Execute the job template and review the log output.
 .. icon:todo[] grab lb ip from output and visit the web-app in a browser.
+
+. *Create and Configure the Clean Job Template*
++
+The final step of the lab 2 is to create the _clean.yaml_ template and then run the job which will decommision the infrastructure we spun up during the create play.
++
+.. Click the icon:new[] icon and select _Job Template_ as the template type from the initial pop-up.
+.. Populate the _New Job Template_ fields with the following values:
+* *Name*: use `siduser\#\##-clean`,  where \### is replaced with your user number.
+* *Job Type*: `Run`
+* *Inventory*: `localhost-inventory`.
+* *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
+* *PlaybooK*: `lab2/clean.yaml`
+* *Credentials*: Click icon:search[] in the _Credentials_ field and then choose `Amazon Web Services` for the _Credential Type_ and then select `aws-api` and then click icon:select-button[]
++
+image::images/lab2_000009_template_credentials.png[]
++
+* *Instance Groups*: select `Tower`
+* *Extra Variables*: In the extra variable field, please add the following, verbatim:
++
+`siduser: "{{ tower_user_name}}"`
++
+image::images/lab2_000010_extra_variables.png[]
++
+[WARNING]
+====
+Please double check that the extra-variables syntax is correct before saving the template.
+====
+.. Click the icon:save[] button to save the template.
+
+.. icon:todo[] - Insert screenshot of completed template form.
+.. icon:todo[] - Run the job template and review the log output.
