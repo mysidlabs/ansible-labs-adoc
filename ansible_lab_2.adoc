@@ -1,9 +1,7 @@
-include::global.adoc[]
 ifdef::env-github[]
 :imagesdir: https://github.com/mysidlabs/ansible-labs-adoc/blob/master/images
 endif::[]
-:toc:
-:toc-placement!:
+
 
 === Ansible Lab 2 - Introduction to Ansible Tower
 ==== Overview
