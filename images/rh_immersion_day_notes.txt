@@ -1,0 +1,85 @@
+RedHatTeam Assist
+
+I’ll explain all this in a bit…
+
+ 
+
+AWS
+
+Account=theflier2018
+
+Id=dmatthews
+
+Pw=Pa33w0rd!! (will need to change at first login)
+
+ 
+
+There is a CodeCommit repo called mysidlabs that has some relevant stuff in it.
+
+ 
+
+GitHub
+
+There is an org called mysidlabs where most of you work will be.  I sent you an invite last week which you need to accept.
+
+ 
+
+Lab Env
+
+dmatthews, Pa33w0rd!! will get you in as admin to all the below.
+
+You can use siduser298, Pa33w0rd!! to run labs as a normal student.
+
+•             directory.mysidlabs.com – LDAP server to authenticate below.
+
+•             jump.mysidlabs.com – jump box into the lab environments.
+
+•             tower.mysidlabs.com – Ansible Tower cluster.  Primary interest for now.
+
+•             Console.apps.ocp1.mysidlabs.com – OCP 4 cluster for the second immersion day/labs.
+
+ 
+
+ 
+
+current AWS account Id
+
+ 
+
+765106048720
+
+ 
+
+ 
+
+3-labs for ansible
+
+3-labs for openshift
+
+ 
+
+Virtual Training Workshops
+
+Powerpoint content
+
+3-labs per each
+
+maybe still delivered as group
+
+s
+
+but also want to provide access to individuals to work through labs
+
+ 
+
+student guides need to be created
+
+screen shots
+
+and walkthrough
+
+ 
+
+additionals
+
+github account
