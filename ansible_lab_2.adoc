@@ -1,4 +1,24 @@
 include::global.adoc[]
+= GitHub Flavored Asciidoc (GFA)
+ifdef::env-github[]
+
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+
+:imagesdir: images/
+:userid: siduser###
+:userpassword: Passw0rd0420!
+:jumphost: jump.mysidlabs.com
+:jumphostname: jump
+:prompt: {userid}@{jumphostname}:~$ 
+:icons:
+
+endif::[]
+:toc:
+:toc-placement!:
 
 === Ansible Lab 2 - Introduction to Ansible Tower
 ==== Overview
