@@ -21,7 +21,7 @@ In Lab 2 will introduce _Ansible Tower_ and walk through the configuration of a 
 . Clean up, deprovisioning the application once the lab is complete.
 
 === Prerequisites
-. You will need a https://https://github.com/[GitHub] account in order to complete this lab.
+. You will need a https://github.com/join[GitHub] account in order to complete this lab.
 . Once you are logged into your account, fork the following repository to your personal account:
 * https://github.com/mysidlabs/ansible-labs
 +
