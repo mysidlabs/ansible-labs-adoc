@@ -98,7 +98,7 @@ This will cascade-populate the Credential box with valid credential options for 
 * *Regions* - Select `US East (Ohio)`
 * *Instance Filters* - _verbatim_ `tag:mysidlabs_owner=sinduser###`
 +
-[WARNING]
+[IMPORTANT]
 ====
 Please doublecheck the _Regions_ and _Instance Filters_ values, as both fields are *critical* for the deployment and clean-up of the lab infrastructure.
 ====
@@ -140,7 +140,7 @@ image::lab2_000009_template_credentials.png[]
 +
 image::lab2_000010_extra_variables.png[]
 +
-[WARNING]
+[IMPORTANT]
 ====
 Please double check that the extra-variables syntax is correct before saving the template.
 ====
@@ -180,7 +180,7 @@ image::lab2_000009_template_credentials.png[]
 +
 image::lab2_000010_extra_variables.png[]
 +
-[WARNING]
+[IMPORTANT]
 ====
 Please double check that the extra-variables syntax is correct before saving the template.
 ====
@@ -214,7 +214,7 @@ image::lab2_000009_template_credentials.png[]
 +
 image::lab2_000010_extra_variables.png[]
 +
-[WARNING]
+[IMPORTANT]
 ====
 Please double check that the extra-variables syntax is correct before saving the template.
 ====
