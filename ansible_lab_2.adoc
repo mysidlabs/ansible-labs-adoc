@@ -152,9 +152,23 @@ Please double check that the extra-variables syntax is correct before saving the
 +
 image::lab2_create_job_output.png[]
 +
-* 
-Notice that this output is the same output genrated by command line execution.
-.. icon:todo[] - Review the dynamic inventory once the job has completed.
+* Review the output from the run and make a note of the public IP Address that was generated for the load-balancer, `***-lb-0 == Private IP: ..., Public IP: ..."`.
+This will be the public endpoint for our web-application once it has been configured.
++
+[NOTE]
+====
+Tower tees the ouput from the underlying Ansible execution of the play and displays the output here.  It is the same output that would be generated had the play been executed via the CLI with the `ansible-playbook` command.
+====
+.. The _Create_ play that was just executed created three new EC2 hosts.  We can now view these hosts in the dynamic inventory we created earlier in the lab.
+* Navigate to the inventory for your lab user  `Inventory -> siduser\###-inventory` and then click on the `HOSTS` button.
+It should look similar to the following:
++
+image::lab2_dynamic_inventory.png[]
++
+[TIP]
+====
+If the _Create.yaml_ job completed successfully and the _Hosts_ page is still empty, go to the `SOURCES` tab and then click the `SYNC-ALL` button. Now return to the `Hosts` tab and the inventory should be refreshed.
+==== 
 
 
 // Configure Job Template
