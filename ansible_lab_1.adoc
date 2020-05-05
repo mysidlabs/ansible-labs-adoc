@@ -10,7 +10,7 @@ ifdef::env-github[]
 
 :imagesdir: images/
 :userid: siduser###
-:userpassword: Passw0rd0420!
+:userpassword: sid
 :jumphost: jump.mysidlabs.com
 :jumphostname: jump
 :prompt: {userid}@{jumphostname}:~$ 
@@ -36,7 +36,7 @@ You will perform the following tasks in the course of this excercise:
 [source,bash]
 [subs="verbatim,attributes"]
 ----
-{prompt} ssh <siduser###>@jump.mysidlabs.com 
+$> ssh <siduser###>@jump.mysidlabs.com 
 ----
 +
 Where `<siduser###>` is the user id provided by your instructor and using the password `{userpassword}`.
@@ -47,7 +47,7 @@ Where `<siduser###>` is the user id provided by your instructor and using the pa
 [source,bash]
 [subs="verbatim,attributes"]
 ----
-{prompt} tree
+$> tree
 lab1
 ├── ansible.cfg
 ├── clean.yaml
@@ -61,7 +61,7 @@ lab1
 +
 [source,cfg]
 ----
-include::src/ansible-labs/lab1/ansible.cfg[]
+include::https://github.com/mysidlabs/ansible-labs/blob/master/lab1/ansible.cfg
 ----
 * *group_vars/all.yaml* - this file defines variables that can be applied against groups defined in the inventory.
 In this case the filename _all.yaml_ represents the special _Ansible_ defined group `*_all_*` which will affect every host in the inventory.
@@ -92,7 +92,7 @@ include::src/ansible-labs/lab1/configure.yaml[]
 [source,bash]
 [subs="verbatim,attributes"]
 ----
-{prompt} ansible-playbook create.yaml
+$> ansible-playbook create.yaml
 ----
 +
 If the play is successful you will see output as the playbook executes ending with something similar to the following:
@@ -118,7 +118,7 @@ Execute the _configure.yaml_ play with the following command using the `-i` flag
 [source,bash]
 [subs="verbatim,attributes"]
 ----
-{prompt} ansible-playbook configure.yaml -i inv.txt
+$> ansible-playbook configure.yaml -i inv.txt
 ----
 +
 It may be possible that not all tasks complete successfully. In this case you may see output like the following:
@@ -140,7 +140,7 @@ The output for the _Install a few sample packages_ task shows that there was no 
 [source,bash]
 [subs="verbatim,attributes"]
 ----
-{prompt} ./login
+$> ./login
 ----
 
 
