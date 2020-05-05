@@ -1,4 +1,3 @@
-include::global.adoc[]
 ifdef::env-github[]
 :imagesdir: https://github.com/mysidlabs/ansible-labs-adoc/blob/master
 endif::[]
@@ -12,10 +11,9 @@ endif::[]
 In Lab 2 will introduce _Ansible Tower_ and walk through the configuration of a simple project.  This project will deploy and configure a simple web-application behind a load balancer. 
 
 . Take a quick tour of _Ansible Tower_.
-. Provision an AWS ec2 instance.
-. Minimaly configure the instance once it has been provisioned.
-. Log into the instance once configuration is complete to take a look around.
-. Clean up, deprovisioning the instance once the lab is complete.
+. Set up a project and a dynamic inventory.
+. Create job templates to provisiona simple multi-tier web application.
+. Clean up, deprovisioning the application once the lab is complete.
 
 ==== Prerequisites
 . You will need a https://https://github.com/[GitHub] account in order to complete this lab.
