@@ -1,4 +1,9 @@
 ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
 :imagesdir: https://github.com/mysidlabs/ansible-labs-adoc/blob/master
 endif::[]
 
@@ -43,7 +48,7 @@ Populate the _New Project_ form with the following information:
 .. *Name* - `siduser\#\##-repo` where \### is replaced with your user number.
 .. *Organization* - `sid-org`
 +
-[WARNING]
+[IMPORTANT]
 ====
 Make sure  *`sid-org`* is the organization used for all of the excercises in these labs.
 ====
