@@ -11,8 +11,8 @@ endif::[]
 :icons:
 
 
-=== Ansible Lab 2 - Introduction to Ansible Tower
-==== Overview
+== Ansible Lab 2 - Introduction to Ansible Tower
+=== Overview
 In Lab 2 will introduce _Ansible Tower_ and walk through the configuration of a simple project.  This project will deploy and configure a simple web-application behind a load balancer. 
 
 . Take a quick tour of _Ansible Tower_.
@@ -20,7 +20,7 @@ In Lab 2 will introduce _Ansible Tower_ and walk through the configuration of a 
 . Create job templates to provisiona simple multi-tier web application.
 . Clean up, deprovisioning the application once the lab is complete.
 
-==== Prerequisites
+=== Prerequisites
 . You will need a https://https://github.com/[GitHub] account in order to complete this lab.
 . Once you are logged into your account, fork the following repository to your personal account:
 * https://github.com/mysidlabs/ansible-labs
@@ -28,14 +28,37 @@ In Lab 2 will introduce _Ansible Tower_ and walk through the configuration of a 
 image::lab2_000001_github_fork.png[50%]
 . Begin the lab.
 
-==== Lab 2 - Ansible Tower
+=== Ansible Tower Quick Tour
 . Log into https://tower.mysidlabs.com[tower]  (tower.mysidlabs.com)
 . Take a quick tour of _Tower_ and the features that will be used for this lab.
 * *Dashboard* - this is the landing page and provides a bird's eye view of the number of hosts, inventories, and projects being managed as well as a graphic history of recently executed jobs and templates.
 +
 image::lab2_000002_tower_dashboard.png[]
-* *Projects* - TODO: FINSIH CREATING DESCRIPTIONS FOR THE VARIOUS TOWER RESOURCES USED IN THE LABS.
 +
+* *Jobs* - The jobs view provides a list of all jobs that have been executed on the system as well as the status for the run, the template used, and the job type.  You can also quick launch a job from this view or deleted it.
+clicking on the job title or status icon will take you to the details and ouput from the executed run.
++
+image:lab2_tour_jobs.png[]
++
+* *Credentials* - Tower provides support for integration with a variety of secret management solutions, as well as private certs, and native secret management using _Ansible Vault_.
++
+image::lab2_tour_credentials.png[]
+image::lab2_tour_credentials_detail.png[width=50%]
++
+* *Projects* - A project in _Ansible Tower_ is a defined connection to a source code repository that contains a collection of _Ansible_ plays, roles, etc.
+_Tower_ supports the following SCMs:
+** Git
+** Mercurial
+** Subversion
+** Red Hat Insights
++
+image::lab2_tour_projects.png[]
++
+We will look at Inventories and Templates in more detail through the course of the Lab.
+
+
+
+== Ansible Tower Lab 2
 // Create Project
 . *Create a Project*
 +
