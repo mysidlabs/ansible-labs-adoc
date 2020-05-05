@@ -1,4 +1,14 @@
-include::global.adoc[]
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+:imagesdir: https://github.com/mysidlabs/ansible-labs-adoc/blob/master
+endif::[]
+
+:imagesdir: images/
+:icons:
 
 === Ansible Lab 3 - Introduction to Ansible Tower Workflows
 ==== Overview
