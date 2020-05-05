@@ -94,7 +94,7 @@ image::lab2_000007_new_inventory_source.png[]
 * *Name* - `siduser\#\##-aws-source` where \### is replaced with your user number.
 * *Source* - select `Amazon EC2` from the option list.
 This will cascade-populate the Credential box with valid credential options for the selected source.
-* *Credential* - click the icon:search[] icon and then select `aws-api` from the resulting pop-up.
+* *Credential* - click the image:icons/search.png[] icon and then select `aws-api` from the resulting pop-up.
 * *Regions* - Select `US East (Ohio)`
 * *Instance Filters* - _verbatim_ `tag:mysidlabs_owner=sinduser###`
 +
@@ -117,7 +117,7 @@ image::lab2_000008_source_form.png[]
 +
 In this portion of the lab, we will be creating _Job Templates_ to represent the Ansible plays in the lab repository. We'll begin with creating a _Job Template_ for the _create.yaml_ play in the lab2 folder.
 +
-.. Click the icon:new[] icon and select _Job Template_ as the template type from the initial pop-up.
+.. Click the image:icons/new.png[] icon and select _Job Template_ as the template type from the initial pop-up.
 .. Populate the _New Job Template_ fields with the following values:
 * *Name*: use `siduser\#\##-create`,  where \### is replaced with your user number.
 * *Job Type*: `Run`
@@ -129,7 +129,7 @@ In Ansible, when connecting to an external API, especially in the creation of in
 ====
 * *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
 * *PlaybooK*: `lab2/create.yaml`
-* *Credentials*: Click icon:search[] in the _Credentials_ field, select `Amazon Web Services` for the _Credential Type_, and then select `aws-api` and then click image:icons/select-button.png[]
+* *Credentials*: Click image:icons/search.png[] in the _Credentials_ field, select `Amazon Web Services` for the _Credential Type_, and then select `aws-api` and then click image:icons/select-button.png[]
 +
 image::lab2_000009_template_credentials.png[]
 +
@@ -183,7 +183,7 @@ We'll now create the _Job Template_ for the _configure.yaml_ play from lab2.  Th
 * *Inventory*: `siduser\#\##-inventory`  where \### is replaced with your user number.
 * *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
 * *PlaybooK*: `lab2/configure.yaml`
-* *Credentials*: Click image:icons-search.png[] in the _Credentials_ field and then choose `Machine` for the _Credential Type_ and then select `ansible-labs-only` and then click icon:select-button[]
+* *Credentials*: Click image:icons/search.png[] in the _Credentials_ field and then choose `Machine` for the _Credential Type_ and then select `ansible-labs-only` and then click icon:select-button[]
 +
 image::lab2_000009_template_credentials.png[]
 +
@@ -204,7 +204,7 @@ image::lab2_configure_template_form.png[]
 +
 .. icon:todo[] Execute the job template and review the log output.
 .. icon:todo[] grab lb ip from output and visit the web-app in a browser.
-
++
 
 // Clean Job Template
 . *Create and Configure the Clean Job Template*
@@ -218,7 +218,7 @@ The final step of the lab 2 is to create the _clean.yaml_ template and then run 
 * *Inventory*: `localhost-inventory`.
 * *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
 * *PlaybooK*: `lab2/clean.yaml`
-* *Credentials*: Click image:icons/search-button.png[] in the _Credentials_ field and then choose `Amazon Web Services` for the _Credential Type_ and then select `aws-api` and then click icon:select-button[]
+* *Credentials*: Click image:icons/search.png[] in the _Credentials_ field and then choose `Amazon Web Services` for the _Credential Type_ and then select `aws-api` and then click icon:select-button[]
 +
 image::lab2_000009_template_credentials.png[]
 +
