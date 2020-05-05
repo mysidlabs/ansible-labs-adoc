@@ -35,7 +35,7 @@ image::lab2_000001_github_fork.png[50%]
 +
 image::lab2_000002_tower_dashboard.png[]
 * *Projects* - 
-
++
 // Create Project
 . *Create a Project*
 +
@@ -62,7 +62,7 @@ Make sure  *`sid-org`* is the organization used for all of the excercises in the
 .. Click the image:icons/save-button.png[] button - your newly created project will be added to the project list at the bottom of the page.
 +
 image::lab2_000004_project_form.png[]
-
++
 //Create Inventory
 . *Create an Inventory*
 + 
@@ -77,16 +77,16 @@ image::lab2_000005_new_inventory.png[]
 * *Name* - `siduser\#\##-inventory` where \### is replaced with your user number.
 * *Organization* - `sid-org`
 +
-.. Click the icon:save[] button. - your newly created inventory will be added to the inventory list at the bottom of the page.
+.. Click the image:icons/save-button.png[] button. - your newly created inventory will be added to the inventory list at the bottom of the page.
 +
 image::lab2_000006_new_inventory_form.png[]
-
++
 // Inventory Source
 . *Configure an Inventory Source*
 +
 In this step we will configure a source for the newly defined inventory.
 +
-.. Click the icon:sources-button[] button/tab and then click the icon:new[] icon to open the source creation form.
+.. Click the image:icons/sources-button.png[] button/tab and then click the image:icons/new.png[] icon to open the source creation form.
 +
 image::lab2_000007_new_inventory_source.png[]
 +
@@ -110,7 +110,7 @@ Please doublecheck the _Regions_ and _Instance Filters_ values, as both fields a
 .. Click the icon:save[] button and the source will be added to the sources list at the bottom of the page.
 +
 image::lab2_000008_source_form.png[]
-
++
 
 // Create Job Template
 . *Create and Configure the _Create_ Job Template*
@@ -169,7 +169,7 @@ image::lab2_dynamic_inventory.png[]
 ====
 If the _Create.yaml_ job completed successfully and the _Hosts_ page is still empty, go to the `SOURCES` tab and then click the `SYNC-ALL` button. Now return to the `Hosts` tab and the inventory should be refreshed.
 ==== 
-
++
 
 // Configure Job Template
 . *Create and Configure the _Configure_ Job Template*
@@ -199,8 +199,9 @@ image::lab2_000010_extra_variables.png[]
 Please double check that the extra-variables syntax is correct before saving the template.
 ====
 .. Click the icon:save[] button to save the template.
-
-.. icon:todo[] - Insert screenshot of completed template form.
++
+image::lab2_configure_template_form.png[]
++
 .. icon:todo[] Execute the job template and review the log output.
 .. icon:todo[] grab lb ip from output and visit the web-app in a browser.
 
