@@ -58,6 +58,7 @@ lab1
 └── login
 ----
 * https://github.com/mysidlabs/ansible-labs/blob/master/lab1/ansible.cfg[ansible.cfg] - this is a local ansible config file which overrides some aspects of the global  `/etc/ansible/ansible.cfg` file.
++
 [source,cfg]
 ----
 [defaults]
@@ -67,7 +68,7 @@ ansible_python_interpreter=/usr/bin/python3
 [colors]
 verbose=normal
 ----
-
++
 * https://github.com/mysidlabs/ansible-labs/blob/master/lab1/group_vars/all.yaml[*group_vars/all.yaml*] - this file defines variables that can be applied against groups defined in the inventory.
 In this case the filename _all.yaml_ represents the special _Ansible_ defined group `*_all_*` which will affect every host in the inventory.
 Group variable provide a method to cross-cut concerns when provisioning infrastructure.
