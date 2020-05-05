@@ -107,7 +107,7 @@ Please doublecheck the _Regions_ and _Instance Filters_ values, as both fields a
 * *Update Options* - Select:
 ** Overwrite
 ** Update on Launch
-.. Click the icon:save[] button and the source will be added to the sources list at the bottom of the page.
+.. Click the image:icons/save-button.png[] button and the source will be added to the sources list at the bottom of the page.
 +
 image::lab2_000008_source_form.png[]
 +
@@ -129,7 +129,7 @@ In Ansible, when connecting to an external API, especially in the creation of in
 ====
 * *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
 * *PlaybooK*: `lab2/create.yaml`
-* *Credentials*: Click icon:search[] in the _Credentials_ field, select `Amazon Web Services` for the _Credential Type_, and then select `aws-api` and then click icon:select-button[]
+* *Credentials*: Click icon:search[] in the _Credentials_ field, select `Amazon Web Services` for the _Credential Type_, and then select `aws-api` and then click image:icons/select-button.png[]
 +
 image::lab2_000009_template_credentials.png[]
 +
@@ -144,10 +144,10 @@ image::lab2_000010_extra_variables.png[]
 ====
 Please double check that the extra-variables syntax is correct before saving the template.
 ====
-.. Click the icon:save[] button to save the template.
+.. Click the image:icons/save-button.png[] button to save the template.
 
 .. icon:todo[] - Insert screenshot of completed template form.
-.. Click the icon:launch-button[] button to execute the job.
+.. Click the image:icons/launch-button.png[] button to execute the job.
 * when the job has completed review the output at the bottom of the page.
 +
 image::lab2_create_job_output.png[]
@@ -176,14 +176,14 @@ If the _Create.yaml_ job completed successfully and the _Hosts_ page is still em
 +
 We'll now create the _Job Template_ for the _configure.yaml_ play from lab2.  This process is very similar to the previous step with the exception that this time we will specify our user _dynamic_ inventory.
 +
-.. Click the icon:new[] icon and select _Job Template_ from the pop-up.
+.. Click the image:icons/new.png[] icon and select _Job Template_ from the pop-up.
 .. Populate the _New Job Template_ fields with the following values:
 * *Name*: use `siduser\#\##-configure`,  where \### is replaced with your user number.
 * *Job Type*: `Run`
 * *Inventory*: `siduser\#\##-inventory`  where \### is replaced with your user number.
 * *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
 * *PlaybooK*: `lab2/configure.yaml`
-* *Credentials*: Click icon:search[] in the _Credentials_ field and then choose `Machine` for the _Credential Type_ and then select `ansible-labs-only` and then click icon:select-button[]
+* *Credentials*: Click image:icons-search.png[] in the _Credentials_ field and then choose `Machine` for the _Credential Type_ and then select `ansible-labs-only` and then click icon:select-button[]
 +
 image::lab2_000009_template_credentials.png[]
 +
@@ -198,7 +198,7 @@ image::lab2_000010_extra_variables.png[]
 ====
 Please double check that the extra-variables syntax is correct before saving the template.
 ====
-.. Click the icon:save[] button to save the template.
+.. Click the image:icons/save-button.png[] button to save the template.
 +
 image::lab2_configure_template_form.png[]
 +
@@ -211,14 +211,14 @@ image::lab2_configure_template_form.png[]
 +
 The final step of the lab 2 is to create the _clean.yaml_ template and then run the job which will decommision the infrastructure we spun up during the create play.
 +
-.. Click the icon:new[] icon and select _Job Template_ as the template type from the initial pop-up.
+.. Click the image:icons/new.png[] icon and select _Job Template_ as the template type from the initial pop-up.
 .. Populate the _New Job Template_ fields with the following values:
 * *Name*: use `siduser\#\##-clean`,  where \### is replaced with your user number.
 * *Job Type*: `Run`
 * *Inventory*: `localhost-inventory`.
 * *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
 * *PlaybooK*: `lab2/clean.yaml`
-* *Credentials*: Click icon:search[] in the _Credentials_ field and then choose `Amazon Web Services` for the _Credential Type_ and then select `aws-api` and then click icon:select-button[]
+* *Credentials*: Click image:icons/search-button.png[] in the _Credentials_ field and then choose `Amazon Web Services` for the _Credential Type_ and then select `aws-api` and then click icon:select-button[]
 +
 image::lab2_000009_template_credentials.png[]
 +
@@ -233,7 +233,7 @@ image::lab2_000010_extra_variables.png[]
 ====
 Please double check that the extra-variables syntax is correct before saving the template.
 ====
-.. Click the icon:save[] button to save the template.
+.. Click the image:icons/save-button.png[] button to save the template.
 
 .. icon:todo[] - Insert screenshot of completed template form.
 .. icon:todo[] - Run the job template and review the log output.
