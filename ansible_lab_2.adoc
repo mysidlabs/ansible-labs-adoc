@@ -34,7 +34,7 @@ image::lab2_000001_github_fork.png[50%]
 * *Dashboard* - this is the landing page and provides a bird's eye view of the number of hosts, inventories, and projects being managed as well as a graphic history of recently executed jobs and templates.
 +
 image::lab2_000002_tower_dashboard.png[]
-* *Projects* - 
+* *Projects* - TODO: FINSIH CREATING DESCRIPTIONS FOR THE VARIOUS TOWER RESOURCES USED IN THE LABS.
 +
 // Create Project
 . *Create a Project*
@@ -241,7 +241,14 @@ image::lab2_000010_extra_variables.png[]
 ====
 Please double check that the extra-variables syntax is correct before saving the template.
 ====
++
+image::lab2_clean_template_form.png[]
++
 .. Click the image:icons/save-button.png[] button to save the template.
+.. Click the image:icons/launch-button.png[] button to initiate the job run.
++
+image::lab2_clean_job_log_output.png[]
++
+.. Return to your user's inventory page and verify that the `HOSTS` have been removed from the inventory.
 
-.. icon:todo[] - Insert screenshot of completed template form.
-.. icon:todo[] - Run the job template and review the log output.
+=== LAB 2 COMPLETED
