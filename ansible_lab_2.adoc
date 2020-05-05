@@ -144,9 +144,10 @@ image::lab2_000010_extra_variables.png[]
 ====
 Please double check that the extra-variables syntax is correct before saving the template.
 ====
++
+image::lab2_create_template_form.png[]
++
 .. Click the image:icons/save-button.png[] button to save the template.
-
-.. icon:todo[] - Insert screenshot of completed template form.
 .. Click the image:icons/launch-button.png[] button to execute the job.
 * when the job has completed review the output at the bottom of the page.
 +
@@ -184,6 +185,7 @@ We'll now create the _Job Template_ for the _configure.yaml_ play from lab2.  Th
 * *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
 * *PlaybooK*: `lab2/configure.yaml`
 * *Credentials*: Click image:icons/search.png[] in the _Credentials_ field and then choose `Machine` for the _Credential Type_ and then select `ansible-labs-only` and then click icon:select-button[]
+* *Verbosity*: You can modify the verbosity of the output here. `0(Normal)` is the default. 
 +
 image::lab2_000009_template_credentials.png[]
 +
@@ -198,12 +200,18 @@ image::lab2_000010_extra_variables.png[]
 ====
 Please double check that the extra-variables syntax is correct before saving the template.
 ====
-.. Click the image:icons/save-button.png[] button to save the template.
 +
 image::lab2_configure_template_form.png[]
 +
-.. icon:todo[] Execute the job template and review the log output.
-.. icon:todo[] grab lb ip from output and visit the web-app in a browser.
+.. Click the image:icons/save-button.png[] button to save the template.
+.. Click the image:icons/launch-button.png[] button to initiate the job run.
++
+image::lab2_configure_job_log_output.png[]
++
+.. Once the job has finished, open a web browser and navigate to the IP address for the load balancer for your application and you should see output to the following.
+The application simply toggles back and forth between the two backend apache servers behind the nginx load-balancer.
++
+image::lab2_web_app.png[]
 +
 
 // Clean Job Template
