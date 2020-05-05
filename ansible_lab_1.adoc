@@ -57,32 +57,123 @@ lab1
 │   └── all.yaml
 └── login
 ----
-* *ansible.cfg* - this is a local ansible config file which overrides some aspects of the global  `/etc/ansible/ansible.cfg` file.
-+
+* https://github.com/mysidlabs/ansible-labs/blob/master/lab1/ansible.cfg[ansible.cfg] - this is a local ansible config file which overrides some aspects of the global  `/etc/ansible/ansible.cfg` file.
 [source,cfg]
 ----
-include::https://github.com/mysidlabs/ansible-labs/blob/master/lab1/ansible.cfg
+[defaults]
+host_key_checking = False
+ansible_python_interpreter=/usr/bin/python3
+
+[colors]
+verbose=normal
 ----
-* *group_vars/all.yaml* - this file defines variables that can be applied against groups defined in the inventory.
+
+* https://github.com/mysidlabs/ansible-labs/blob/master/lab1/group_vars/all.yaml[*group_vars/all.yaml*] - this file defines variables that can be applied against groups defined in the inventory.
 In this case the filename _all.yaml_ represents the special _Ansible_ defined group `*_all_*` which will affect every host in the inventory.
 Group variable provide a method to cross-cut concerns when provisioning infrastructure.
 More information on inventory, host, and group variables can be found https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html[here].
 +
 [source,yaml]
 ----
-include::src/ansible-labs/lab1/group_vars/all.yaml[]
+ ---
+ansible_user: "centos"
+ansible_python_interpreter: "auto_silent"
+ansible_ssh_private_key_file: "~/.ssh/ssh-key.pem"
+
+inventory_file: "inv.txt"
+siduser: "{{ lookup('env', 'USER') | default('siduser299', true) }}"
+
+# AWS 
+aws_ssh_key_pair: "ansible-labs-only"
+instance_type: "t2.micro"
+region: "us-east-2"
+security_group: "ssh-http-https"
+vpc_subnet: "subnet-3964a275"
+...
 ----
-* *create.yaml* - this is a simple _Ansible_ playbook that creates an AWS ec2 instance and then dynamically creates an inventory file, inv.txt with the newly created host as the only entry.  Also note that the the target host for this play is *_localhost_*.
++
+* https://github.com/mysidlabs/ansible-labs/blob/master/lab1/create.yaml[*create.yaml*] - this is a simple _Ansible_ playbook that creates an AWS ec2 instance and then dynamically creates an inventory file, inv.txt with the newly created host as the only entry.  Also note that the the target host for this play is *_localhost_*.
 +
 [source,yaml]
 ----
-include::src/ansible-labs/lab1/create.yaml[]
+---
+# Step 1 - Create a single EC2 instance and boot it.
+# No configuration beyond a simple boot will be done.
+
+- name: "Create host instance"
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: "Provision and launch instances"
+      ec2:
+        assign_public_ip: true
+        group: "{{ security_group }}"
+        image: "ami-01e36b7901e884a10"
+        instance_tags:
+          Name: "{{ siduser }}-lab1"
+          mysidlabs: "1"
+          mysidlabs_owner: "{{ siduser }}"
+          mysidlabs_tier: "lab1"
+        instance_type: "{{ instance_type }}"
+        key_name: "{{ aws_ssh_key_pair }}"
+        region: "{{ region }}"
+        vpc_subnet_id: "{{ vpc_subnet }}"
+        wait: true
+      register: ec2
+
+    # Create an Ansible inventory file that contains
+    # the public DNS name of the instance just created.
+    - name: "Remove old host inventory file"
+      file:
+        path: "hosts"
+        state: absent
+    - name: "Create hosts inventory file"
+      lineinfile:
+        create: true
+        path: "inv.txt"
+        line: "{{ ec2.instances[0].public_dns_name }}"
+
+    - debug:
+        msg: "{{ ec2.instances[0].tags.Name }} == Private IP: {{ ec2.instances[0].private_ip }}, Public IP: {{ ec2.instances[0].public_ip }}"
+      
+...
 ----
-* *configure.yaml* - this play configures the host. It creates a user account, distributes an ssh-key, and then installs a few basic packages.
+* https://github.com/mysidlabs/ansible-labs/blob/master/lab1/configure.yaml[*configure.yaml*] - this play configures the host. It creates a user account, distributes an ssh-key, and then installs a few basic packages.
 +
 [source,yaml]
 ----
-include::src/ansible-labs/lab1/configure.yaml[]
+---
+# Step 2 - Configure the instance.  This is a simple
+# example that just creates a user acct.  This playbook
+# can be extended to do more detailed configuration.
+
+- name: "Configure Instance"
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+
+    - name: "Ensure User Account Exists"
+      user:
+        name: "{{ siduser }}"
+        groups: adm
+
+    - name: "Add Authorized Key"
+      authorized_key:
+        user: "{{ siduser }}"
+        key: "{{ lookup('file', '~/.ssh/ssh-key.pub') }}"
+
+    - name: "Install a few sample packages"
+      package:
+        name:
+          - git
+          - vim
+          - wget
+        state: present
+...
 ----
 
 
