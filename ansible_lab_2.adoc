@@ -62,7 +62,7 @@ We will look at Inventories and Templates in more detail through the course of t
 // Create Project
 . *Create a Project*
 +
-Begin by creating a new project by clicking the image:icons/new.png[] icon.
+Begin by navigating to the _Projects_ view and create a new project by clicking the image:icons/new.png[] icon.
 +
 image::lab2_000003_create_project.png[]
 +
