@@ -1,3 +1,0 @@
-== Potential Issues
-. Exection of `lab ansible` as siduser### returns a root shell.
-. package installation does not appear to be working for the current target instance.
