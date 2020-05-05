@@ -32,80 +32,12 @@ For more detailed instructions, please see the walkthrough for that lab.
 ==== Lab 3 - Ansible Tower Workflows
 . Log into https://tower.mysidlabs.com[tower]  (tower.mysidlabs.com)
 . Navigate to the _Templates_ page.
-. Click the icon:new[] button to create a new template, this time selecting *_Workflow Template_* from the pop-up.
+. Click the image:icons/new.png[] button to create a new template, this time selecting *_Workflow Template_* from the pop-up.
 . Populate the _New Workflow Job Template_ with the following details:
 .. *Name*: `siduser\###-lab3-workflow`
 .. *Organization*: `sid-org`
 .. *Inventory*: `siduser\###-inventory`
 +
-image::images/lab3_001_new_workflow_template.png[]
+image::lab3_001_new_workflow_template.png[]
 +
-. Click the icon:save[] button and then launch the _Workflow Visualizer_.
-
-
-. *Create and Configure the Create Job Template*
-+
-In this portion of the lab, we will be creating _Job Templates_ to represent the Ansible plays in the lab repository. We'll begin with creating a _Job Template_ for the _create.yaml_ play in the lab2 folder.
-+
-.. Click the icon:new[] icon and select _Job Template_ as the template type from the initial pop-up.
-.. Populate the _New Job Template_ fields with the following values:
-* *Name*: use `siduser\#\##-create`,  where \### is replaced with your user number.
-* *Job Type*: `Run`
-* *Inventory*: `localhost-inventory`.
-+
-[NOTE]
-====
-In Ansible, when connecting to an external API, especially in the creation of infrastructure, the play is run and executed on the localhost.  `localhost-inventory` represents the _Tower_ localhost when running plays such as this.
-====
-* *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
-* *PlaybooK*: `lab2/create.yaml`
-* *Credentials*: Click icon:search[] in the _Credentials_ field and then choose `Amazon Web Services` for the _Credential Type_ and then select `aws-api` and then click icon:select-button[]
-+
-image::images/lab2_000009_template_credentials.png[]
-+
-* *Instance Groups*: select `Tower`
-* *Extra Variables*: In the extra variable field, please add the following, verbatim:
-+
-`siduser: "{{ tower_user_name}}"`
-+
-image::images/lab2_000010_extra_variables.png[]
-+
-[WARNING]
-====
-Please double check that the extra-variables syntax is correct before saving the template.
-====
-.. Click the icon:save[] button to save the template.
-+
-.. icon:todo[] - Run the job template and review the log output.
-.. icon:todo[] - Review the dynamic inventory once the job has completed.
-
-
-. *Create and Configure the Configure Job Template*
-+
-We'll now create the _Job Template_ for the _configure.yaml_ play from lab2.  This process is very similar to the previous step with the exception that this time we will specify our user _dynamic_ inventory.
-+
-.. Click the icon:new[] icon and select _Job Template_ from the pop-up.
-.. Populate the _New Job Template_ fields with the following values:
-* *Name*: use `siduser\#\##-configure`,  where \### is replaced with your user number.
-* *Job Type*: `Run`
-* *Inventory*: `siduser\#\##-inventory`  where \### is replaced with your user number.
-* *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
-* *PlaybooK*: `lab2/create.yaml`
-* *Credentials*: Click icon:search[] in the _Credentials_ field and then choose `Machine` for the _Credential Type_ and then select `ansible-labs-only` and then click icon:select-button[]
-+
-image::images/lab2_000009_template_credentials.png[]
-+
-* *Instance Groups*: select `Tower`
-* *Extra Variables*: In the extra variable field, please add the following, verbatim:
-+
-`siduser: "{{ tower_user_name}}"`
-+
-image::images/lab2_000010_extra_variables.png[]
-+
-[WARNING]
-====
-Please double check that the extra-variables syntax is correct before saving the template.
-====
-.. Click the icon:save[] button to save the template.
-.. icon:todo[] Execute the job template and review the log output.
-.. icon:todo[] grab lb ip from output and visit the web-app in a browser.
+. Click the image:icons/save-button.png[] button and then launch the _Workflow Visualizer_.
