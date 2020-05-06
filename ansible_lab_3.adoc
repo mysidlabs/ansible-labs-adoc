@@ -10,14 +10,14 @@ endif::[]
 :imagesdir: images/
 :icons:
 
-== Ansible Lab 3 - Introduction to Ansible Tower Workflows
-=== Overview
+= Ansible Lab 3 - Introduction to Ansible Tower Workflows
+== Overview
 Lab 3 introduces _Ansible Tower_ template workflows. In this excerxise you will 
 
 . Create the _wait_for_ssh_ auxillary job template.
 . Create a workflow template that combines the plays from the previous lab into a single, executable job run.
 
-=== Ansible Tower Workflow Editor Overview
+== Ansible Tower Workflow Editor Overview
 . Ansible tower provides a graphical UI to aid in the creation automation workflows.  
 Below is an example of the workflow you will be creating throught the course of this lab. 
 +
@@ -27,7 +27,7 @@ image::lab3_workflow_vis_overview.png[]
 Select a node by clicking on it.
 
 * The selected node-type is determined by the drop-down in the upper right corner of the view.
-It can be set as one of the following using the drop down in the top right corner of the view.
+It can be set to one of the following by using the drop down in the top right corner of the view.
 *** Template
 *** Project Sync
 *** Inventory Sync
@@ -47,10 +47,22 @@ This can be useful in creating paralell execution paths.
 
 
 
-=== Lab 3 - Ansible Tower Workflows
+== Lab 3 - Ansible Tower Workflow
 // Create wait_for_ssh template.
-. We need to create one more _Job Template_ before we can piece together the workflow for this lab.
-Create the _wait-for-ssh_ template by navigating to the _Templates_ page and click the image:icons/new.png[] button.
+To begin the lab:
+
+* Log into https://tower.mysidlabs.com[tower]  (tower.mysidlabs.com)
+* Navigate to the _Templates_ page.
+
+We need to create one more _Job Template_, _wait_for_ssh_ before we can piece together the complete workflow for this lab.
+[NOTE]
+====
+When Ansible Tower executes a workflow, the plays are run in sequence without pause.
+As a result, it is likely that the _Configure_ step of the workflow will attempt to run before the OS on the newly provisioned machine has had time to start the ssh daemon. 
+In order to prevent the run from failing from a connection error, the _wait-for-ssh_ play introduces a polling pause that checks for ssh connectivity before continuing with the configuration play.
+====
+
+. Create the _wait-for-ssh_ template by navigating to the _Templates_ page and click the image:icons/new.png[] button.
 Populate the form with the following details:
 +
 * *Name*: `siduser\#\##-wait-for-ssh` where \### is replaced with your user number.
@@ -63,21 +75,15 @@ Populate the form with the following details:
 +
 `siduser: "{{ tower_user_name}}"`
 +
-image::lab2_000010_extra_variables.png[]
+image:lab3_wait_for_ssh_template_form.png[]
++
 
-+
-[NOTE]
-====
-When Ansible Tower executes a workflow, the plays are run in sequence without pause.
-As a result, it is likely that the _Configure_ step of the workflow will attempt to run before the OS on the newly provisioned machine has had time to start the ssh daemon. 
-In order to prevent the run from failing from a connection error, the _wait-for-ssh_ play introduces a polling pause that checks for ssh connectivity before continuing with the configuration play.
-====
-+
 // Create Workflow Template
-. Log into https://tower.mysidlabs.com[tower]  (tower.mysidlabs.com)
-. Navigate to the _Templates_ page.
-. Click the image:icons/new.png[] button to create a new template, this time selecting *_Workflow Template_* from the pop-up.
-. Populate the _New Workflow Job Template_ with the following details:
+. Next create the Lab 3 Workflow Template
+
+.. Click the image:icons/new.png[] button to create a new template, this time selecting *_Workflow Template_* from the pop-up.
+.. Populate the _New Workflow Job Template_ with the following details:
++
 * *Name*: `siduser\###-lab3-workflow`
 * *Organization*: `sid-org`
 * *Inventory*: `siduser\###-inventory`
@@ -88,8 +94,57 @@ image::lab3_001_new_workflow_template.png[]
 +
 . We will now use the workflow visualizer to compose a single workflow to deploy and configure the sample multi-tier web-app.
 +
+.. Click on the image:icons/workflow-visualizer-button.png[] button to open the visual editor.
+Once the editor is open:
+.. Click on the *_Start_* node. A grey dotted outline will appear representing the node to be inserted.
+* Select _Project Syn_ from the node-type drop-down.
+* Select the project for your user, e.g. siduser270-repo.
+* Click the imgae:icons/select-button.png[] to add the node to the workflow.
++
+image:lab3_workflow_node1_project_refresh.png[]
++
+.. Click on the *_Start_* node again. A second, tentative, node will be displayed underneath the _Project_ node that was just created.
+For this node, select the following:
+* Select *_Template_* for the node-type.
+* Select the `siduser\###-lab2-clean` template from the template list.
+* Click the image:icons/select-button.png[] to insert the node.
++
+image:lab3_workflow_node2_clean.png[]
++
+.. This time mouse over the _lab2-clean_ node just created and click on the image:icons/node-new.png[] button to initiate a new node for the _lab2_create_ job. An extension appears from the _lab2-clean_ node.
 
+* Select `Template` for the node-type.
+* Select the `siduser\###-lab2-create` for the job template.
+* For this node, make sure tha `On Success` is selected for _RUN_.
+* Click the image:icons/select-button.png[] button to add the node to the workflow.
++
+image:lab3_workflow_node3_lab2-create.png[]
++
+[NOTE]
+====
+A link type can be determined and edited by hovering the mouse over the link.
+image:lab3_workflow_link_mouseover.png[]
+Additionally, the links are color-coded as follows:
 
-
-
+* [red]*Red* - On Failure
+* [green]*Green* - On Success
+* [blue]*Blue* - Always
+====
++
+.. We'll now link the _Project Refresh_ node we created to the new _lab2_create_ node as well.
+* Mouseover the _Project Refresh_ node and click the image:icons/node-ling.png[] button.
+* Now click on the _lab2_create_ node.
+* In the righ-hand side-bar make sure that _On Success_ is selected for _RUN_.
+* Click the image:icons/save-button.png[] button.
++ 
+image:lab3_workflow_link_refresh_and_create.png[]
++
+.. We'll now add the _lab2_configure_  node after the _lab2_create_ node.
+* Mouseover the _lab2_create_ node and click on the image:icons/node-new.png[] button.
+* Select `Template` for the node-type.
+* Select `siduser\###-lab2-configure` for the job template.
+* Make sure `On Success` is selected for _RUN_.
+* Click the image:icons/select-button.png[] button to add the node to the workflow.
++
+image:lab3_workflow_node4_configure.png[]
 
