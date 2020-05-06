@@ -17,18 +17,33 @@ Lab 3 introduces _Ansible Tower_ template workflows. In this excerxise you will
 . Create the _wait_for_ssh_ auxillary job template.
 . Create a workflow template that combines the plays from the previous lab into a single, executable job run.
 
-=== Prerequisites
-. You will need a https://https://github.com/[GitHub] account in order to complete this lab.
-. Once you are logged into your account, fork the following repository to your personal account:
-* https://github.com/mysidlabs/ansible-labs
+=== Ansible Tower Workflow Editor Overview
+. Ansible tower provides a graphical UI to aid in the creation automation workflows.  
+Below is an example of the workflow you will be creating throught the course of this lab. 
++
+image::lab3_workflow_vis_overview.png[]
++
+. The active node is indicated by a vertical blue bar displayed on the left side of the currently selected node.
+Select a node by clicking on it.
 
+* The selected node-type is determined by the drop-down in the upper right corner of the view.
+It can be set as one of the following using the drop down in the top right corner of the view.
+*** Template
+*** Project Sync
+*** Inventory Sync
+*** Approval
+* The right side-bar will be populated with objects of the type selected in the drop down.
+* Selecting an object and clicking the image:icons/select-button.png[] button will assign that object to the current node.
++
+image::lab3_workflow_node_detail.png[]
++
+* image:icons/node-type.png[] - This icon represents the node type.
 
+* image:icons/node-new.png[] - The plus icon initiates a new node in sequence directly following the currently selected node.
 
-=== Ansible Tower Workflow Visualizer Overview
-
-Ansible tower provides a graphical UI to aid in the creation automation workflows.  Below is an example of the workflow you will be creating throught the course of this lab.
-
-image::lab3_workflow_vis_overview.png
+* image:icons/node-link.png[] - The link icon allows this node to be linked to another, already existent, node on the page.
+This can be useful in creating paralell execution paths.
+* image:icons/node-delete.png[] - The X icon will delete the node after a cocnfirmation.
 
 
 
@@ -53,7 +68,9 @@ image::lab2_000010_extra_variables.png[]
 +
 [NOTE]
 ====
-When Ansible Tower executes a workflow, the plays are run in sequence without pause.  As a result, it is likely that the _Configure_ step of the workflow will attempt to run before the OS on the newly provisioned machine has had time to start the ssh daemon. In order to prevent the run from failing due to a connection error, the _wait-for-ssh_ play introduces a polling pause that checks for ssh connectivity before continuing with the configuration play.
+When Ansible Tower executes a workflow, the plays are run in sequence without pause.
+As a result, it is likely that the _Configure_ step of the workflow will attempt to run before the OS on the newly provisioned machine has had time to start the ssh daemon. 
+In order to prevent the run from failing from a connection error, the _wait-for-ssh_ play introduces a polling pause that checks for ssh connectivity before continuing with the configuration play.
 ====
 +
 // Create Workflow Template
