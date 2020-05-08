@@ -132,7 +132,7 @@ Additionally, the links are color-coded as follows:
 ====
 +
 .. We'll now link the _Project Refresh_ node we created to the new _lab2_create_ node as well.
-* Mouseover the _Project Refresh_ node and click the image:icons/node-ling.png[] button.
+* Mouseover the _Project Refresh_ node and click the image:icons/node-link.png[] button.
 * Now click on the _lab2_create_ node.
 * In the righ-hand side-bar make sure that _On Success_ is selected for _RUN_.
 * Click the image:icons/save-button.png[] button.
@@ -147,4 +147,15 @@ image:lab3_workflow_link_refresh_and_create.png[]
 * Click the image:icons/select-button.png[] button to add the node to the workflow.
 +
 image:lab3_workflow_node4_configure.png[]
-
++
+.. The _wait_for_ssh_ play is still required in order for this play to run successfully.
+This play should be executed after _create_ but before _configure_.
+Rather than delete the _configure_ node and then recreating it after the _wait_for_ssh_ play, we can insert a new node into the current workflow.
+* Mouse over the linke between the _Create_ and _Configure_ node and click on the image:icons/node-new.png[]
++
+image:lab3_insert_link_mouseover.png[]
++
+* Select `Template` for the node-type.
+* Select `siduser\###-lab2-wait` for the job template.
+* Make sure `On Success` is selected for _RUN_.
+* Click the image:icons/select-button.png[] button to add the node to the workflow.
