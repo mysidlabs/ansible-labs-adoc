@@ -159,3 +159,6 @@ image:lab3_insert_link_mouseover.png[]
 * Select `siduser\###-lab2-wait` for the job template.
 * Make sure `On Success` is selected for _RUN_.
 * Click the image:icons/select-button.png[] button to add the node to the workflow.
+
++
+image:lab3_workflow_node5_wait_for_ssh.png[]
