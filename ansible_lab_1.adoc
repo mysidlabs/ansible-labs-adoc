@@ -23,12 +23,12 @@ endif::[]
 === Ansible Lab 1 - Ansible Command Line
 ==== Overview
 This is a quick lab meant to be run from the command line.
-You will perform the following tasks in the course of this excercise:
+You will perform the following tasks in the course of this exercise:
 
 . Provision an AWS EC2 instance
-. Minimaly configure the instance once it has been provisioned.
+. Minimally configure the instance once it has been provisioned.
 . Log into the instance once configuration is complete to take a look around.
-. Clean up, deprovisioning the instance once the lab is complete.
+. Clean up, de-provisioning the instance once the lab is complete.
 
 ==== Lab 1
 . The lab will be run from a bastion host in AWS. Begin by SSHing to the jump host with the command:
@@ -179,7 +179,7 @@ vpc_subnet: "subnet-3964a275"
 
 
 
-. After reviewing the files we want to begin by executing the intial play defined in _create.yaml_.
+. After reviewing the files we want to begin by executing the initial play defined in _create.yaml_.
 +
 [source,bash]
 [subs="verbatim,attributes"]
@@ -213,7 +213,8 @@ Execute the _configure.yaml_ play with the following command using the `-i` flag
 $> ansible-playbook configure.yaml -i inv.txt
 ----
 +
-It may be possible that not all tasks complete successfully. In this case you may see output like the following:
+In the event that a play does not complete successfully, the output will return with a an error and provide the error message returned by the failed process on the target host.
+
 +
 [source,ansible]
 [subs="verbatim,attributes"]
@@ -224,9 +225,8 @@ fatal: [ec2-13-58-174-200.us-east-2.compute.amazonaws.com]: FAILED! => {"changed
 PLAY RECAP ****************************************************************************
 ec2-13-58-174-200.us-east-2.compute.amazonaws.com : ok=3    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
 ----
-In this example we can see that 3 tasks were executed, 2 were sucessful, and 1 failed.
-The output for the _Install a few sample packages_ task shows that there was no Cowsay package available for that host.
-
+In this example we can see that 3 tasks were executed, 2 were successful, and 1 failed.
+In this example, the package _cowsay_ was not available for installation through the default repositories for the target OS.
 . Now connect to the host by executing the _login_ shell script in the lab1 directory.
 +
 [source,bash]
