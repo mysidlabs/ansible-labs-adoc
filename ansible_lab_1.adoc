@@ -234,7 +234,56 @@ In this example, the package _cowsay_ was not available for installation through
 ----
 $> ./login
 ----
+Once connected, verify that the packages specified in the _configure.yaml_ play are now available on the target host. e.g.
++
+[source,bash]
+[subs="verbatim,attributes"]
+----
+[siduser270@ip-172-31-45-143 ~]$ git --version
+git version 1.8.3.1
+[siduser270@ip-172-31-45-143 ~]$ 
+
+[siduser270@ip-172-31-45-143 ~]$ wget www.google.com
+--2020-05-27 16:36:46--  http://www.google.com/
+Resolving www.google.com (www.google.com)... 172.217.4.36, 2607:f8b0:4009:804::2004
+Connecting to www.google.com (www.google.com)|172.217.4.36|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: 'index.html'
+
+    [ <=>                                                                                                                   ] 12,016      --.-K/s   in 0s      
+
+2020-05-27 16:36:47 (128 MB/s) - 'index.html' saved [12016]
+
+[siduser270@ip-172-31-45-143 ~]$ vim index.html 
+
+...
+output truncated
+...
+
+----
 
 
-. Finally, run the _clean.yaml_ play to destroy the ec2 instances and clean
+. Finally, run the _clean.yaml_ play to destroy the ec2 instances and clean up the environment.
++
+[source,bash]
+[sub="verbatim,attributes"]
+----
+siduser270@toolkit ~/dev/ansible/lab1 # ansible-playbook clean.yaml 
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [Cleanup all instances that match the target tag - mysidlabs_owner: {{ siduser }}] ************************************************************************
+
+TASK [Terminate labeled instances] *****************************************************************************************************************************
+changed: [localhost]
+
+TASK [Delete stale hosts inventory file] ***********************************************************************************************************************
+changed: [localhost]
+
+PLAY RECAP *****************************************************************************************************************************************************
+localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+siduser270@toolkit ~/dev/ansible/lab1 # 
+
+----
 
