@@ -77,7 +77,7 @@ Make sure  *`sid-org`* is the organization used for all of the excercises in the
 ====
 +
 .. *SCM Type* - `git` - this project will be using the lab repository that was forked as a pre-req to this lab.
-.. *SCM URL* - use the https version of the git url. *e.g.* `https:\\github.com\demo-user\ansible-labs.git`.
+.. *SCM URL* - use the https version of the git url. *e.g.* `https://github.com/demo-user/ansible-labs.git`
 .. *SCM Update Options* - Select the following options:
 ** Clean
 ** Delete on Update
