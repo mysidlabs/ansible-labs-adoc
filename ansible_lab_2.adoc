@@ -119,7 +119,7 @@ image::lab2_000007_new_inventory_source.png[]
 This will cascade-populate the Credential box with valid credential options for the selected source.
 * *Credential* - click the image:icons/search.png[] icon and then select `aws-api` from the resulting pop-up.
 * *Regions* - Select `US East (Ohio)`
-* *Instance Filters* - _verbatim_ `tag:mysidlabs_owner=sinduser###`
+* *Instance Filters* - _verbatim_ `tag:mysidlabs_owner=siduser###`
 +
 [IMPORTANT]
 ====
