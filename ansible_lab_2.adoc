@@ -20,13 +20,13 @@ In Lab 2 will introduce _Ansible Tower_ and walk through the configuration of a 
 . Create job templates to provisiona simple multi-tier web application.
 . Clean up, deprovisioning the application once the lab is complete.
 
-=== Prerequisites
-. You will need a https://github.com/join[GitHub] account in order to complete this lab.
-. Once you are logged into your account, fork the following repository to your personal account:
-* https://github.com/mysidlabs/ansible-labs
-+
-image::lab2_000001_github_fork.png[50%]
-. Begin the lab.
+// === Prerequisites
+// . You will need a https://github.com/join[GitHub] account in order to complete this lab.
+// . Once you are logged into your account, fork the following repository to your personal account:
+// * https://github.com/mysidlabs/ansible-labs
+// +
+// image::lab2_000001_github_fork.png[50%]
+// . Begin the lab.
 
 === Ansible Tower Quick Tour
 . Log into https://tower.mysidlabs.com[tower]  (tower.mysidlabs.com)
@@ -60,15 +60,41 @@ We will look at Inventories and Templates in more detail through the course of t
 
 == Ansible Tower Lab 2
 // Create Project
-. *Create a Project*
+// . *Create a Project*
+// +
+// Begin by navigating to the _Projects_ view and create a new project by clicking the image:icons/new.png[] icon.
+// +
+// image::lab2_000003_create_project.png[]
+// +
+// Populate the _New Project_ form with the following information:
+// +
+// .. *Name* - `siduser\#\##-repo` where \### is replaced with your user number.
+// .. *Organization* - `sid-org`
+// +
+// [IMPORTANT]
+// ====
+// Make sure  *`sid-org`* is the organization used for all of the excercises in these labs.
+// ====
+// +
+// .. *SCM Type* - `git` - this project will be using the lab repository that was forked as a pre-req to this lab.
+// .. *SCM URL* - use the https version of the git url. *e.g.* `https://github.com/demo-user/ansible-labs.git`
+// .. *SCM BRANCH/TAG/COMMIT* - type `windows` to select the windows branch for the Sirius Ansbile SID lab.
+// .. *SCM Update Options* - Select the following options:
+// ** Clean
+// ** Delete on Update
+// ** Update Revision on Launch
+// .. Click the image:icons/save-button.png[] button - your newly created project will be added to the project list at the bottom of the page.
+// +
+// image::lab2_000004_project_form.png[]
+. *Review the lab2-windows-repo Project*
 +
-Begin by navigating to the _Projects_ view and create a new project by clicking the image:icons/new.png[] icon.
+Begin by navigating to the _Projects_ view and click on the `lab2-windows-repo` lab link to review its settings.
 +
-image::lab2_000003_create_project.png[]
+image::lab2_000003_review_project.png[]
 +
-Populate the _New Project_ form with the following information:
+Review the _New Project_ form taking note of the following information:
 +
-.. *Name* - `siduser\#\##-repo` where \### is replaced with your user number.
+.. *Name* - `lab2-windows-repo`.
 .. *Organization* - `sid-org`
 +
 [IMPORTANT]
@@ -78,6 +104,7 @@ Make sure  *`sid-org`* is the organization used for all of the excercises in the
 +
 .. *SCM Type* - `git` - this project will be using the lab repository that was forked as a pre-req to this lab.
 .. *SCM URL* - use the https version of the git url. *e.g.* `https://github.com/demo-user/ansible-labs.git`
+.. *SCM BRANCH/TAG/COMMIT* - type `windows` to select the windows branch for the Sirius Ansbile SID lab.
 .. *SCM Update Options* - Select the following options:
 ** Clean
 ** Delete on Update
@@ -99,10 +126,17 @@ image::lab2_000005_new_inventory.png[]
 +
 * *Name* - `siduser\#\##-inventory` where \### is replaced with your user number.
 * *Organization* - `sid-org`
+* *Variables* - add the following to the variables section.  This tells Tower to use winrm as the connection type instead of the default ssh.
++
+[source yaml]
+----
+---
+ansible_connection: winrm
+ansible_winrm_server_cert_validation: ignore
+----
 +
 .. Click the image:icons/save-button.png[] button. - your newly created inventory will be added to the inventory list at the bottom of the page.
-+
-image::lab2_000006_new_inventory_form.png[]
+
 +
 // Inventory Source
 . *Configure an Inventory Source*
@@ -138,7 +172,7 @@ image::lab2_000008_source_form.png[]
 // Create Job Template
 . *Create and Configure the _Create_ Job Template*
 +
-In this portion of the lab, we will be creating _Job Templates_ to represent the Ansible plays in the lab repository. We'll begin with creating a _Job Template_ for the _create.yaml_ play in the lab2 folder.
+In this portion of the lab, we will be creating _Job Templates_ to represent the Ansible plays in the lab repository. We'll begin with creating a _Job Template_ for the _create.yaml_ play in the lab2.
 +
 .. Click the image:icons/new.png[] icon and select _Job Template_ as the template type from the initial pop-up.
 .. Populate the _New Job Template_ fields with the following values:
@@ -150,13 +184,14 @@ In this portion of the lab, we will be creating _Job Templates_ to represent the
 ====
 In Ansible, when connecting to an external API, especially in the creation of infrastructure, the play is run and executed on the localhost.  `localhost-inventory` represents the _Tower_ localhost when running plays such as this.
 ====
-* *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
-* *PlaybooK*: `lab2/create.yaml`
+// * *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
+* *Project*: `lab2-windows-repo`
+* *PlaybooK*: `lab2-windows/create.yaml`
 * *Credentials*: Click image:icons/search.png[] in the _Credentials_ field, select `Amazon Web Services` for the _Credential Type_, and then select `aws-api` and then click image:icons/select-button.png[]
 +
 image::lab2_000009_template_credentials.png[]
 +
-* *Instance Groups*: select `Tower`
+// * *Instance Groups*: select `Tower`
 * *Extra Variables*: In the extra variable field, please add the following, verbatim:
 +
 `siduser: "{{ tower_user_name}}"`
@@ -205,14 +240,14 @@ We'll now create the _Job Template_ for the _configure.yaml_ play from lab2.  Th
 * *Name*: use `siduser\#\##-configure`,  where \### is replaced with your user number.
 * *Job Type*: `Run`
 * *Inventory*: `siduser\#\##-inventory`  where \### is replaced with your user number.
-* *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
-* *PlaybooK*: `lab2/configure.yaml`
-* *Credentials*: Click image:icons/search.png[] in the _Credentials_ field and then choose `Machine` for the _Credential Type_ and then select `ansible-labs-only` and then click icon:select-button[]
+* *Project*: `lab2-windows-repo`
+* *PlaybooK*: `lab2-windows/configure.yaml`
+* *Credentials*: Click image:icons/search.png[] in the _Credentials_ field and then choose `Machine` for the _Credential Type_ and then select `ansible-windows-labs-only` and then click icon:select-button[]
 * *Verbosity*: You can modify the verbosity of the output here. `0(Normal)` is the default. 
 +
 image::lab2_000009_template_credentials.png[]
 +
-* *Instance Groups*: select `Tower`
+// * *Instance Groups*: select `Tower`
 * *Extra Variables*: In the extra variable field, please add the following, verbatim:
 +
 `siduser: "{{ tower_user_name}}"`
@@ -247,13 +282,13 @@ The final step of the lab 2 is to create the _clean.yaml_ template and then run 
 * *Name*: use `siduser\#\##-clean`,  where \### is replaced with your user number.
 * *Job Type*: `Run`
 * *Inventory*: `localhost-inventory`.
-* *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
-* *PlaybooK*: `lab2/clean.yaml`
+* *Project*: `lab2-windows-repo` where \### is replaced with your user number.
+* *PlaybooK*: `lab2-windows/clean.yaml`
 * *Credentials*: Click image:icons/search.png[] in the _Credentials_ field and then choose `Amazon Web Services` for the _Credential Type_ and then select `aws-api` and then click icon:select-button[]
 +
 image::lab2_000009_template_credentials.png[]
 +
-* *Instance Groups*: select `Tower`
+// * *Instance Groups*: select `Tower`
 * *Extra Variables*: In the extra variable field, please add the following, verbatim:
 +
 `siduser: "{{ tower_user_name}}"`
