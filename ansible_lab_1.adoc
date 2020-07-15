@@ -63,7 +63,6 @@ lab1
 ----
 [defaults]
 host_key_checking = False
-ansible_python_interpreter=/usr/bin/python3
 
 [colors]
 verbose=normal
@@ -71,26 +70,37 @@ verbose=normal
 +
 * https://github.com/mysidlabs/ansible-labs/blob/master/lab1/group_vars/all.yaml[*group_vars/all.yaml*] - this file defines variables that can be applied against groups defined in the inventory.
 In this case the filename _all.yaml_ represents the special _Ansible_ defined group `*_all_*` which will affect every host in the inventory.
-Group variable provide a method to cross-cut concerns when provisioning infrastructure.
+Group variables provide a method to cross-cut concerns when provisioning infrastructure.
 More information on inventory, host, and group variables can be found https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html[here].
++
+For this lab, the Administrator account and password are stored as variables in this file.  Therefore it has been encrypted using ansible-vault.  To view the file on the cli, view the file using the following command:
++
+`ansible-vault edit all.yaml` and then enter your lab password when prompted.
 +
 [source,yaml]
 ----
- ---
-ansible_user: "centos"
-ansible_python_interpreter: "auto_silent"
-ansible_ssh_private_key_file: "~/.ssh/ssh-key.pem"
+---
+ansible_user: Administrator
+ansible_password: wind0wsSidlabs!
+user_password: Ger2014!
+ansible_connection: winrm
+ansible_winrm_server_cert_validation: ignore
+ansible_winrm_transport: basic
+
+# ansible_python_interpreter: "auto_silent"
+# ansible_ssh_private_key_file: "~/.ssh/ssh-key.pem"
 
 inventory_file: "inv.txt"
 siduser: "{{ lookup('env', 'USER') | default('siduser299', true) }}"
 
-# AWS 
-aws_ssh_key_pair: "ansible-labs-only"
-instance_type: "t2.micro"
+# AWS
+# aws_ssh_key_pair: "ansible-labs-only"
+instance_type: "t3a.medium"
 region: "us-east-2"
-security_group: "ssh-http-https"
+security_group: "ansible-winrm-enabled"
 vpc_subnet: "subnet-3964a275"
 ...
+
 ----
 +
 * https://github.com/mysidlabs/ansible-labs/blob/master/lab1/create.yaml[*create.yaml*] - this is a simple _Ansible_ playbook that creates an AWS ec2 instance and then dynamically creates an inventory file, inv.txt with the newly created host as the only entry.  Also note that the the target host for this play is *_localhost_*.
@@ -146,34 +156,35 @@ vpc_subnet: "subnet-3964a275"
 [source,yaml]
 ----
 ---
+  
 # Step 2 - Configure the instance.  This is a simple
-# example that just creates a user acct.  This playbook
-# can be extended to do more detailed configuration.
+# example that just creates a user acct and installs IIS and management tools.
+#  This playbook can be extended to do more detailed configuration.
 
 - name: "Configure Instance"
   hosts: all
-  become: true
   gather_facts: true
 
   tasks:
 
     - name: "Ensure User Account Exists"
-      user:
+      win_user:
         name: "{{ siduser }}"
-        groups: adm
+        password: "{{ user_password }}"
+        groups: Administrators
 
-    - name: "Add Authorized Key"
-      authorized_key:
-        user: "{{ siduser }}"
-        key: "{{ lookup('file', '~/.ssh/ssh-key.pub') }}"
-
-    - name: "Install a few sample packages"
-      package:
-        name:
-          - git
-          - vim
-          - wget
+    - name: Install IIS Web-Server with sub features and management tools
+      win_feature:
+        name: web-server
         state: present
+        include_sub_features: yes
+        include_management_tools: yes
+      register: win_feature
+
+    - name: Reboot if installing Web-Server feature requires it
+      win_reboot:
+      when: win_feature.reboot_required
+
 ...
 ----
 
@@ -219,49 +230,62 @@ In the event that a play does not complete successfully, the output will return 
 [source,ansible]
 [subs="verbatim,attributes"]
 ----
-TASK [Install a few sample packages] ****************************************************************************
-fatal: [ec2-13-58-174-200.us-east-2.compute.amazonaws.com]: FAILED! => {"changed": false, "msg": "No package matching 'cowsay' found available, installed or updated", "rc": 126, "results": ["No package matching 'cowsay' found available, installed or updated"]}
+PLAY [Configure Instance] **************************************************************************************************************************************
 
-PLAY RECAP ****************************************************************************
-ec2-13-58-174-200.us-east-2.compute.amazonaws.com : ok=3    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+TASK [Gathering Facts] *****************************************************************************************************************************************
+ok: [ec2-3-18-225-194.us-east-2.compute.amazonaws.com]
+
+TASK [Ensure User Account Exists] ******************************************************************************************************************************
+ok: [ec2-3-18-225-194.us-east-2.compute.amazonaws.com]
+
+TASK [Install IIS Web-Server with sub features and management tools] *******************************************************************************************
+ok: [ec2-3-18-225-194.us-east-2.compute.amazonaws.com]
+
+TASK [Reboot if installing Web-Server feature requires it] *****************************************************************************************************
+skipping: [ec2-3-18-225-194.us-east-2.compute.amazonaws.com]
+
+PLAY RECAP *****************************************************************************************************************************************************
+ec2-3-18-225-194.us-east-2.compute.amazonaws.com : ok=3    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 ----
 In this example we can see that 3 tasks were executed, 2 were successful, and 1 failed.
 In this example, the package _cowsay_ was not available for installation through the default repositories for the target OS.
-. Now connect to the host by executing the _login_ shell script in the lab1 directory.
+. Now you can connect to the host by via rdp if you have a client available.  Use the dns name visible in the output from the previous configure play run and then login
+using your sidlab user-name and the lab password that was provided.  You can then launch inetmgr from the run box on the server and verify that IIS and the management
+have been installed.
 +
-[source,bash]
-[subs="verbatim,attributes"]
-----
-$> ./login
-----
-Once connected, verify that the packages specified in the _configure.yaml_ play are now available on the target host. e.g.
-+
-[source,bash]
-[subs="verbatim,attributes"]
-----
-[siduser270@ip-172-31-45-143 ~]$ git --version
-git version 1.8.3.1
-[siduser270@ip-172-31-45-143 ~]$ 
+// [source,bash]
+// [subs="verbatim,attributes"]
+// ----
+// $> ./login
+// ----
+// Once connected, verify that the packages specified in the _configure.yaml_ play are now available on the target host. e.g.
+// +
+// [source,bash]
+// [subs="verbatim,attributes"]
+// ----
+// [siduser270@ip-172-31-45-143 ~]$ git --version
+// git version 1.8.3.1
+// [siduser270@ip-172-31-45-143 ~]$ 
 
-[siduser270@ip-172-31-45-143 ~]$ wget www.google.com
---2020-05-27 16:36:46--  http://www.google.com/
-Resolving www.google.com (www.google.com)... 172.217.4.36, 2607:f8b0:4009:804::2004
-Connecting to www.google.com (www.google.com)|172.217.4.36|:80... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: unspecified [text/html]
-Saving to: 'index.html'
+// [siduser270@ip-172-31-45-143 ~]$ wget www.google.com
+// --2020-05-27 16:36:46--  http://www.google.com/
+// Resolving www.google.com (www.google.com)... 172.217.4.36, 2607:f8b0:4009:804::2004
+// Connecting to www.google.com (www.google.com)|172.217.4.36|:80... connected.
+// HTTP request sent, awaiting response... 200 OK
+// Length: unspecified [text/html]
+// Saving to: 'index.html'
 
-    [ <=>                                                                                                                   ] 12,016      --.-K/s   in 0s      
+//     [ <=>                                                                                                                   ] 12,016      --.-K/s   in 0s      
 
-2020-05-27 16:36:47 (128 MB/s) - 'index.html' saved [12016]
+// 2020-05-27 16:36:47 (128 MB/s) - 'index.html' saved [12016]
 
-[siduser270@ip-172-31-45-143 ~]$ vim index.html 
+// [siduser270@ip-172-31-45-143 ~]$ vim index.html 
 
-...
-output truncated
-...
+// ...
+// output truncated
+// ...
 
-----
+// ----
 
 
 . Finally, run the _clean.yaml_ play to destroy the ec2 instances and clean up the environment.
