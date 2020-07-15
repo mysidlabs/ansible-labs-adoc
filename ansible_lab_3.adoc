@@ -68,9 +68,9 @@ Populate the form with the following details:
 * *Name*: `siduser\#\##-wait-for-ssh` where \### is replaced with your user number.
 * *Job Type*: `Run`
 * *Inventory*: `siduser\#\##-inventory` where \### is replaced with your usser number.
-* *Project*: `siduser\#\##-repo` where \### is replaced with your usser number.
-* *Playbook*: `lab2/wait_for_ssh.yml`
-* *Credentials*: `ansible-labs-only`
+* *Project*: `lab2-windows-repo`
+* *Playbook*: `lab2-windows/wait_for_winrm.yml`
+* *Credentials*: `ansible-windows-labs-only`
 * *Extra Variables*: In the extra variable field, please add the following, verbatim:
 +
 `siduser: "{{ tower_user_name}}"`
@@ -97,8 +97,8 @@ image::lab3_001_new_workflow_template.png[]
 .. Click on the image:icons/workflow-visualizer-button.png[] button to open the visual editor.
 Once the editor is open:
 .. Click on the *_Start_* node. A grey dotted outline will appear representing the node to be inserted.
-* Select _Project Syn_ from the node-type drop-down.
-* Select the project for your user, e.g. siduser270-repo.
+* Select _Project Sync_ from the node-type drop-down.
+* Select the `lab2-windows-repo` from the list of projects.
 * Click the imgae:icons/select-button.png[] to add the node to the workflow.
 +
 image:lab3_workflow_node1_project_refresh.png[]
@@ -162,3 +162,6 @@ image:lab3_insert_link_mouseover.png[]
 
 +
 image:lab3_workflow_node5_wait_for_ssh.png[]
++
+image:lab3_workflow_execution_view.png[]
++
