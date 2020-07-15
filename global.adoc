@@ -1,6 +1,6 @@
 //Attributes
 :userid: siduser###
-:userpassword: Sid2020a!
+:userpassword: 
 :jumphost: jump.mysidlabs.com
 :jumphostname: jump
 :prompt: {userid}@{jumphostname}:~$ 
