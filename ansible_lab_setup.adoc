@@ -56,6 +56,30 @@ This will create the following directory structure in your /home/{userid} direct
 5 directories, 0 files
 ----
 
+cd into the dev/ansible directory:
+
+`cd dev/ansible`
+
+This directory is a git repository.  You will need to check out the `windows` branch to follow along with todays lab.
+
+`git checkout windows`
+
+The excerpt below shows the directory state before and after the windows branch has been checked out.
+
+[source,bash]
+[subs="verbatim,attributes"]
+----
+siduser270@toolkit ~ # cd dev/ansible/
+siduser270@toolkit ~/dev/ansible # ls
+lab1  lab2
+siduser270@toolkit ~/dev/ansible # git checkout windows
+Branch 'windows' set up to track remote branch 'windows' from 'origin'.
+Switched to a new branch 'windows'
+siduser270@toolkit ~/dev/ansible # ls
+lab1-windows  lab2-windows  powershell
+siduser270@toolkit ~/dev/ansible #            
+----
+
 You are now ready to begin lab 1.
 
 
