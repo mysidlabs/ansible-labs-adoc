@@ -1,0 +1,49 @@
+include::global.adoc[]
+= GitHub Flavored Asciidoc (GFA)
+ifdef::env-github[]
+
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+
+:imagesdir: images/
+:userid: siduser###
+:userpassword: sid
+:jumphost: jump.mysidlabs.com
+:jumphostname: jump
+:prompt: {userid}@{jumphostname}:~$ 
+:icons:
+
+endif::[]
+:toc:
+:toc-placement!:
+
+=== Ansible Lab 1 - Ansible Command Line
+Pre-requisites
+
+* SSH client and outbound access on port 22 to _jump.mysidlabs.com_. 
+
+==== Overview
+Lab1 introduce participants to Ansible _Engine_.  The lab is run from the command line and introduces participants to the basic elements of an Ansible project and Playbooks.
+
+. Provision an AWS EC2 instance
+. Minimally configure the instance once it has been provisioned.
+. Log into the instance once configuration is complete to take a look around.
+. Clean up, de-provisioning the instance once the lab is complete.
+
+=== Ansible Lab 2 - Introduction to Red Hat Automation Platform (Formerly _Tower_)
+Lab 2 introduces _Ansible AP_ and walks through the configuration of a simple project.  This project deploys and configures a simple web-application behind a load balancer. 
+
+. Take a quick tour of _Ansible Tower_.
+. Set up a project and a dynamic inventory against AWS EC2.
+. Create job templates to provision a simple multi-tier web application.
+. Clean up, de-provisioning the application once the lab is complete.
+
+=== Ansible Lab 3 - Introduction to Ansible Tower Workflows
+==== Overview
+Lab 3 introduces _Ansible Tower_ template workflows. In this exercise participants use the artifacts created in the previous lab to create and end-to-end workflow that provisions and configures the multi-tier web application.
+
+. Create the _wait_for_ssh_ auxillary job template.
+. Create a workflow template that combines the plays from the previous lab into a single, executable job run.

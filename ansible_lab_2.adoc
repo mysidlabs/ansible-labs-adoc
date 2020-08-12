@@ -16,9 +16,9 @@ endif::[]
 In Lab 2 will introduce _Ansible Tower_ and walk through the configuration of a simple project.  This project will deploy and configure a simple web-application behind a load balancer. 
 
 . Take a quick tour of _Ansible Tower_.
-. Set up a project and a dynamic inventory.
-. Create job templates to provisiona simple multi-tier web application.
-. Clean up, deprovisioning the application once the lab is complete.
+. Set up a project and a dynamic inventory against AWS EC2.
+. Create job templates to provision a simple multi-tier web application.
+. Clean up, de-provisioning the application once the lab is complete.
 
 // === Prerequisites
 // . You will need a https://github.com/join[GitHub] account in order to complete this lab.
@@ -73,12 +73,12 @@ We will look at Inventories and Templates in more detail through the course of t
 // +
 // [IMPORTANT]
 // ====
-// Make sure  *`sid-org`* is the organization used for all of the excercises in these labs.
+// Make sure  *`sid-org`* is the organization used for all of the exercises in these labs.
 // ====
 // +
 // .. *SCM Type* - `git` - this project will be using the lab repository that was forked as a pre-req to this lab.
 // .. *SCM URL* - use the https version of the git url. *e.g.* `https://github.com/demo-user/ansible-labs.git`
-// .. *SCM BRANCH/TAG/COMMIT* - type `windows` to select the windows branch for the Sirius Ansbile SID lab.
+// .. *SCM BRANCH/TAG/COMMIT* - type `windows` to select the windows branch for the Sirius Ansible SID lab.
 // .. *SCM Update Options* - Select the following options:
 // ** Clean
 // ** Delete on Update
@@ -99,7 +99,7 @@ Review the _New Project_ form taking note of the following information:
 +
 [IMPORTANT]
 ====
-Make sure  *`sid-org`* is the organization used for all of the excercises in these labs.
+Make sure  *`sid-org`* is the organization used for all of the exercises in these labs.
 ====
 +
 .. *SCM Type* - `git` - this project will be using the lab repository that was forked as a pre-req to this lab.
@@ -216,7 +216,7 @@ This will be the public endpoint for our web-application once it has been config
 +
 [NOTE]
 ====
-Tower tees the ouput from the underlying Ansible execution of the play and displays the output here.  It is the same output that would be generated had the play been executed via the CLI with the `ansible-playbook` command.
+Tower tees the output from the underlying Ansible execution of the play and displays the output here.  It is the same output that would be generated had the play been executed via the CLI with the `ansible-playbook` command.
 ====
 .. The _Create_ play that was just executed created three new EC2 hosts.  We can now view these hosts in the dynamic inventory we created earlier in the lab.
 * Navigate to the inventory for your lab user  `Inventory -> siduser\###-inventory` and then click on the `HOSTS` button.
@@ -275,7 +275,7 @@ image::lab2_web_app.png[]
 // Clean Job Template
 . *Create and Configure the Clean Job Template*
 +
-The final step of the lab 2 is to create the _clean.yaml_ template and then run the job which will decommision the infrastructure we spun up during the create play.
+The final step of the lab 2 is to create the _clean.yaml_ template and then run the job which will decommission the infrastructure we spun up during the create play.
 +
 .. Click the image:icons/new.png[] icon and select _Job Template_ as the template type from the initial pop-up.
 .. Populate the _New Job Template_ fields with the following values:
