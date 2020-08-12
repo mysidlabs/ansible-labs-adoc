@@ -14,12 +14,12 @@ endif::[]
 == Overview
 Lab 3 introduces _Ansible Tower_ template workflows. In this excerxise you will 
 
-. Create the _wait_for_ssh_ auxillary job template.
+. Create the _wait_for_winrm_ auxillary job template.
 . Create a workflow template that combines the plays from the previous lab into a single, executable job run.
 
 == Ansible Tower Workflow Editor Overview
 . Ansible tower provides a graphical UI to aid in the creation automation workflows.  
-Below is an example of the workflow you will be creating throught the course of this lab. 
+Below is an example of the workflow you will be creating through the course of this lab. 
 +
 image::lab3_workflow_vis_overview.png[]
 +
@@ -42,8 +42,8 @@ image::lab3_workflow_node_detail.png[]
 * image:icons/node-new.png[] - The plus icon initiates a new node in sequence directly following the currently selected node.
 
 * image:icons/node-link.png[] - The link icon allows this node to be linked to another, already existent, node on the page.
-This can be useful in creating paralell execution paths.
-* image:icons/node-delete.png[] - The X icon will delete the node after a cocnfirmation.
+This can be useful in creating parallel execution paths.
+* image:icons/node-delete.png[] - The X icon will delete the node after a confirmation.
 
 
 
@@ -99,7 +99,7 @@ Once the editor is open:
 .. Click on the *_Start_* node. A grey dotted outline will appear representing the node to be inserted.
 * Select _Project Sync_ from the node-type drop-down.
 * Select the `lab2-windows-repo` from the list of projects.
-* Click the imgae:icons/select-button.png[] to add the node to the workflow.
+* Click the image:icons/select-button.png[] to add the node to the workflow.
 +
 image:lab3_workflow_node1_project_refresh.png[]
 +
@@ -134,7 +134,7 @@ Additionally, the links are color-coded as follows:
 .. We'll now link the _Project Refresh_ node we created to the new _lab2_create_ node as well.
 * Mouseover the _Project Refresh_ node and click the image:icons/node-link.png[] button.
 * Now click on the _lab2_create_ node.
-* In the righ-hand side-bar make sure that _On Success_ is selected for _RUN_.
+* In the right-hand side-bar make sure that _On Success_ is selected for _RUN_.
 * Click the image:icons/save-button.png[] button.
 + 
 image:lab3_workflow_link_refresh_and_create.png[]
@@ -151,7 +151,7 @@ image:lab3_workflow_node4_configure.png[]
 .. The _wait_for_ssh_ play is still required in order for this play to run successfully.
 This play should be executed after _create_ but before _configure_.
 Rather than delete the _configure_ node and then recreating it after the _wait_for_ssh_ play, we can insert a new node into the current workflow.
-* Mouse over the linke between the _Create_ and _Configure_ node and click on the image:icons/node-new.png[]
+* Mouse over the link between the _Create_ and _Configure_ node and click on the image:icons/node-new.png[]
 +
 image:lab3_insert_link_mouseover.png[]
 +
