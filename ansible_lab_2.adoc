@@ -156,7 +156,7 @@ In Ansible, when connecting to an external API, especially in the creation of in
 +
 image::lab2_000009_template_credentials.png[]
 +
-* *Instance Groups*: select `Tower`
+* *Instance Groups*: select `Tower` - Depricated step, unecessary
 * *Extra Variables*: In the extra variable field, please add the following, verbatim:
 +
 `siduser: "{{ tower_user_name}}"`
