@@ -162,3 +162,5 @@ image:lab3_insert_link_mouseover.png[]
 
 +
 image:lab3_workflow_node5_wait_for_ssh.png[]
++
+* Click the image:icons/save-button.png[] button and luanch the workflow.
