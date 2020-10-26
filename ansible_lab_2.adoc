@@ -194,7 +194,7 @@ image::lab2_000009_template_credentials.png[]
 // * *Instance Groups*: select `Tower`
 * *Extra Variables*: In the extra variable field, please add the following, verbatim:
 +
-`siduser: "{{ tower_user_name}}"`
+`siduser: "{{ tower_user_name }}"`
 +
 image::lab2_000010_extra_variables.png[]
 +
