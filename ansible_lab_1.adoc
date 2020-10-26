@@ -42,7 +42,7 @@ $> ssh <siduser###>@jump.mysidlabs.com
 Where `<siduser###>` is the user id provided by your instructor and using the password `{userpassword}`.
 
 
-. Once connected, `cd` into the `dev/ansible-labs/lab1` directory and review it's contents.
+. Once connected, `cd` into the `dev/ansible/lab1` directory and review it's contents.
 +
 [source,bash]
 [subs="verbatim,attributes"]
