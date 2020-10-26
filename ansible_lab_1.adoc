@@ -299,7 +299,9 @@ have been installed.
 [source,bash]
 [sub="verbatim,attributes"]
 ----
-siduser270@toolkit ~/dev/ansible/lab1 # ansible-playbook clean.yaml 
+siduser270@toolkit ~/dev/ansible/lab1 # ansible-playbook clean.yaml --ask-vault-pass
+Vault password:
+
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
 
 PLAY [Cleanup all instances that match the target tag - mysidlabs_owner: {{ siduser }}] ************************************************************************
