@@ -65,10 +65,10 @@ In order to prevent the run from failing from a connection error, the _wait-for-
 . Create the _wait-for-ssh_ template by navigating to the _Templates_ page and click the image:icons/new.png[] button.
 Populate the form with the following details:
 +
-* *Name*: `siduser\#\##-wait-for-ssh` where \### is replaced with your user number.
+* *Name*: `siduser\#\##-wait-for-winrm` where \### is replaced with your user number.
 * *Job Type*: `Run`
 * *Inventory*: `siduser\#\##-inventory` where \### is replaced with your usser number.
-* *Project*: `lab2-windows-repo`
+* *Project*: `sidlab-windows`
 * *Playbook*: `lab2-windows/wait_for_winrm.yml`
 * *Credentials*: `ansible-windows-labs-only`
 * *Extra Variables*: In the extra variable field, please add the following, verbatim:
@@ -98,7 +98,7 @@ image::lab3_001_new_workflow_template.png[]
 Once the editor is open:
 .. Click on the *_Start_* node. A grey dotted outline will appear representing the node to be inserted.
 * Select _Project Sync_ from the node-type drop-down.
-* Select the `lab2-windows-repo` from the list of projects.
+* Select the `sidlab-windows` from the list of projects.
 * Click the image:icons/select-button.png[] to add the node to the workflow.
 +
 image:lab3_workflow_node1_project_refresh.png[]
