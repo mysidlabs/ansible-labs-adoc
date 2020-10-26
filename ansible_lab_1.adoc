@@ -103,14 +103,12 @@ vpc_subnet: "subnet-3964a275"
 
 ----
 
-+
 [NOTE] 
 ====
 By default ansible vault uses VI as a text editor, to exit VI text editor use :q!
 ====
-+
 
-+
+
 * https://github.com/mysidlabs/ansible-labs/blob/master/lab1/create.yaml[*create.yaml*] - this is a simple _Ansible_ playbook that creates an AWS ec2 instance and then dynamically creates an inventory file, inv.txt with the newly created host as the only entry.  Also note that the the target host for this play is *_localhost_*.
 +
 [source,yaml]
