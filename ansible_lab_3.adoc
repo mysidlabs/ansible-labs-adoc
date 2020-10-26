@@ -73,7 +73,7 @@ Populate the form with the following details:
 * *Credentials*: `ansible-windows-labs-only`
 * *Extra Variables*: In the extra variable field, please add the following, verbatim:
 +
-`siduser: "{{ tower_user_name}}"`
+`siduser: "{{ tower_user_name }}"`
 +
 image:lab3_wait_for_ssh_template_form.png[]
 +
