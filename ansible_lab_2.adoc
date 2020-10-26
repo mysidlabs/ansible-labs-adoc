@@ -282,7 +282,7 @@ The final step of the lab 2 is to create the _clean.yaml_ template and then run 
 * *Name*: use `siduser\#\##-clean`,  where \### is replaced with your user number.
 * *Job Type*: `Run`
 * *Inventory*: `localhost-inventory`.
-* *Project*: `sidlab-windows` where \### is replaced with your user number.
+* *Project*: `sidlab-windows`
 * *PlaybooK*: `lab2-windows/clean.yaml`
 * *Credentials*: Click image:icons/search.png[] in the _Credentials_ field and then choose `Amazon Web Services` for the _Credential Type_ and then select `aws-api` and then click icon:select-button[]
 +
@@ -291,7 +291,7 @@ image::lab2_000009_template_credentials.png[]
 // * *Instance Groups*: select `Tower`
 * *Extra Variables*: In the extra variable field, please add the following, verbatim:
 +
-`siduser: "{{ tower_user_name}}"`
+`siduser: "{{ tower_user_name }}"`
 +
 image::lab2_000010_extra_variables.png[]
 +
