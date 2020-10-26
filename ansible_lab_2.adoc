@@ -86,15 +86,15 @@ We will look at Inventories and Templates in more detail through the course of t
 // .. Click the image:icons/save-button.png[] button - your newly created project will be added to the project list at the bottom of the page.
 // +
 // image::lab2_000004_project_form.png[]
-. *Review the lab2-windows-repo Project*
+. *Review the sidlab-windows Project*
 +
-Begin by navigating to the _Projects_ view and click on the `lab2-windows-repo` lab link to review its settings.
+Begin by navigating to the _Projects_ view and click on the `sidlab-windows` lab link to review its settings.
 +
 image::lab2_000003_review_project.png[]
 +
 Review the _New Project_ form taking note of the following information:
 +
-.. *Name* - `lab2-windows-repo`.
+.. *Name* - `sidlab-windows`.
 .. *Organization* - `sid-org`
 +
 [IMPORTANT]
