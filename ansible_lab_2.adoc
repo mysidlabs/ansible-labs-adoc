@@ -300,7 +300,7 @@ image::lab2_000010_extra_variables.png[]
 Please double check that the extra-variables syntax is correct before saving the template.
 ====
 +
-image::lab2_clean_template_form.png[]
+image::lab2_clean_template_form_v2.png[]
 +
 .. Click the image:icons/save-button.png[] button to save the template.
 .. Click the image:icons/launch-button.png[] button to initiate the job run.
