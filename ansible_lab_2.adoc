@@ -310,3 +310,4 @@ image::lab2_clean_job_log_output.png[]
 .. Return to your user's inventory page and verify that the `HOSTS` have been removed from the inventory.
 
 === LAB 2 COMPLETED
+Click here to move onto Lab 3: https://github.com/mysidlabs/ansible-labs-adoc/blob/windows/ansible_lab_3.adoc
