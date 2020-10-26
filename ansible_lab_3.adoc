@@ -54,15 +54,15 @@ To begin the lab:
 * Log into https://tower.mysidlabs.com[tower]  (tower.mysidlabs.com)
 * Navigate to the _Templates_ page.
 
-We need to create one more _Job Template_, _wait_for_ssh_ before we can piece together the complete workflow for this lab.
+We need to create one more _Job Template_, _wait_for_winrm_ before we can piece together the complete workflow for this lab.
 [NOTE]
 ====
 When Ansible Tower executes a workflow, the plays are run in sequence without pause.
 As a result, it is likely that the _Configure_ step of the workflow will attempt to run before the OS on the newly provisioned machine has had time to start the ssh daemon. 
-In order to prevent the run from failing from a connection error, the _wait-for-ssh_ play introduces a polling pause that checks for ssh connectivity before continuing with the configuration play.
+In order to prevent the run from failing from a connection error, the _wait-for-winrm_ play introduces a polling pause that checks for ssh connectivity before continuing with the configuration play.
 ====
 
-. Create the _wait-for-ssh_ template by navigating to the _Templates_ page and click the image:icons/new.png[] button.
+. Create the _wait-for-winrm_ template by navigating to the _Templates_ page and click the image:icons/new.png[] button.
 Populate the form with the following details:
 +
 * *Name*: `siduser\#\##-wait-for-winrm` where \### is replaced with your user number.
