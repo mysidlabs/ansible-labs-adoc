@@ -250,7 +250,7 @@ We'll now create the _Job Template_ for the _configure.yaml_ play from lab2.  Th
 // * *Instance Groups*: select `Tower`
 * *Extra Variables*: In the extra variable field, please add the following, verbatim:
 +
-`siduser: "{{ tower_user_name}}"`
+`siduser: "{{ tower_user_name }}"`
 +
 image::lab2_000010_extra_variables.png[]
 +
