@@ -185,7 +185,7 @@ In this portion of the lab, we will be creating _Job Templates_ to represent the
 In Ansible, when connecting to an external API, especially in the creation of infrastructure, the play is run and executed on the localhost.  `localhost-inventory` represents the _Tower_ localhost when running plays such as this.
 ====
 // * *Project*: `siduser\#\##-repo` where \### is replaced with your user number.
-* *Project*: `lab2-windows-repo`
+* *Project*: `sidlab-windows`
 * *PlaybooK*: `lab2-windows/create.yaml`
 * *Credentials*: Click image:icons/search.png[] in the _Credentials_ field, select `Amazon Web Services` for the _Credential Type_, and then select `aws-api` and then click image:icons/select-button.png[]
 +
