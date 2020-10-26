@@ -78,14 +78,13 @@ Make sure  *`sid-org`* is the organization used for all of the excercises in the
 +
 .. *SCM Type* - `git` - this project will be using the lab repository that was forked as a pre-req to this lab.
 .. *SCM URL* - use the https version of the git url. *e.g.* `https://github.com/demo-user/ansible-labs.git`
-.. *SCM BRANCH/TAG/COMMIT* - Type in 'windows' 
 .. *SCM Update Options* - Select the following options:
 ** Clean
 ** Delete on Update
 ** Update Revision on Launch
 .. Click the image:icons/save-button.png[] button - your newly created project will be added to the project list at the bottom of the page.
 +
-image::lab2_000004.2_project_form.png[]
+image::lab2_000004_project_form.png[]
 +
 //Create Inventory
 . *Create an Inventory*
@@ -176,7 +175,7 @@ image::lab2_000010_extra_variables.png[]
 Please double check that the extra-variables syntax is correct before saving the template.
 ====
 +
-image::lab2.2_create_template_form.png[]
+image::lab2_create_template_form.png[]
 +
 .. Click the image:icons/save-button.png[] button to save the template.
 .. Click the image:icons/launch-button.png[] button to execute the job.
