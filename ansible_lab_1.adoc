@@ -319,3 +319,4 @@ siduser270@toolkit ~/dev/ansible/lab1 #
 
 ----
 
+click here to move onto lab 2:  https://github.com/mysidlabs/ansible-labs-adoc/blob/windows/ansible_lab_2.adoc
