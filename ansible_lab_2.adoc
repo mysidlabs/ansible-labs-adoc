@@ -215,6 +215,7 @@ We'll now create the _Job Template_ for the _configure.yaml_ play from lab2.  Th
 * *Credentials*: Click image:icons/search.png[] in the _Credentials_ field and then choose `Machine` for the _Credential Type_ and then select `ansible-labs-only` and then click icon:select-button[]
 * *Verbosity*: You can modify the verbosity of the output here. `0(Normal)` is the default. 
 +
+image::lab2_000009_template_credentials.png[]
 +
 * *Instance Groups*: select `Tower`
 * *Extra Variables*: In the extra variable field, please add the following, verbatim:
