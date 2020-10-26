@@ -82,5 +82,7 @@ siduser270@toolkit ~/dev/ansible #
 
 You are now ready to begin lab 1.
 
+click here to move onto lab1:  https://github.com/mysidlabs/ansible-labs-adoc/blob/windows/ansible_lab_1.adoc
+
 
 
