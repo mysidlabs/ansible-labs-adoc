@@ -253,8 +253,8 @@ skipping: [ec2-3-18-225-194.us-east-2.compute.amazonaws.com]
 PLAY RECAP *****************************************************************************************************************************************************
 ec2-3-18-225-194.us-east-2.compute.amazonaws.com : ok=3    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 ----
-In this example we can see that 3 tasks were executed, 2 were successful, and 1 failed.
-In this example, the package _cowsay_ was not available for installation through the default repositories for the target OS.
+In this example we can see that 3 tasks were executed, 3 were ok, 2 changed and 1 skipped.
+
 . Now you can connect to the host by via rdp if you have a client available.  Use the dns name visible in the output from the previous configure play run and then login
 using your sidlab user-name and the lab password that was provided.  You can then launch inetmgr from the run box on the server and verify that IIS and the management
 have been installed.
