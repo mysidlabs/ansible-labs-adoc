@@ -75,7 +75,7 @@ More information on inventory, host, and group variables can be found https://do
 +
 For this lab, the Administrator account and password are stored as variables in this file.  Therefore it has been encrypted using ansible-vault.  To view the file on the cli, view the file using the following command:
 +
-`ansible-vault edit all.yaml` and then enter your lab password when prompted.
+`ansible-vault edit group_vars/all.yaml` and then enter your lab password when prompted.
 +
 [source,yaml]
 ----
