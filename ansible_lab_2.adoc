@@ -103,7 +103,7 @@ Make sure  *`sid-org`* is the organization used for all of the exercises in thes
 ====
 +
 .. *SCM Type* - `git` - this project will be using the lab repository that was forked as a pre-req to this lab.
-.. *SCM URL* - use the https version of the git url. *e.g.* `https://github.com/demo-user/ansible-labs.git`
+.. *SCM URL* - use the https version of the git url. *e.g.* `https://github.com/mysidlabs/ansible-labs.git`
 .. *SCM BRANCH/TAG/COMMIT* - type `windows` to select the windows branch for the Sirius Ansbile SID lab.
 .. *SCM Update Options* - Select the following options:
 ** Clean
