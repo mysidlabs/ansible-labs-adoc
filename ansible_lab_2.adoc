@@ -240,7 +240,7 @@ We'll now create the _Job Template_ for the _configure.yaml_ play from lab2.  Th
 * *Name*: use `siduser\#\##-configure`,  where \### is replaced with your user number.
 * *Job Type*: `Run`
 * *Inventory*: `siduser\#\##-inventory`  where \### is replaced with your user number.
-* *Project*: `lab2-windows-repo`
+* *Project*: `sidlab-windows`
 * *PlaybooK*: `lab2-windows/configure.yaml`
 * *Credentials*: Click image:icons/search.png[] in the _Credentials_ field and then choose `Machine` for the _Credential Type_ and then select `ansible-windows-labs-only` and then click icon:select-button[]
 * *Verbosity*: You can modify the verbosity of the output here. `0(Normal)` is the default. 
@@ -282,7 +282,7 @@ The final step of the lab 2 is to create the _clean.yaml_ template and then run 
 * *Name*: use `siduser\#\##-clean`,  where \### is replaced with your user number.
 * *Job Type*: `Run`
 * *Inventory*: `localhost-inventory`.
-* *Project*: `lab2-windows-repo` where \### is replaced with your user number.
+* *Project*: `sidlab-windows` where \### is replaced with your user number.
 * *PlaybooK*: `lab2-windows/clean.yaml`
 * *Credentials*: Click image:icons/search.png[] in the _Credentials_ field and then choose `Amazon Web Services` for the _Credential Type_ and then select `aws-api` and then click icon:select-button[]
 +
