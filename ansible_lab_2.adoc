@@ -157,6 +157,10 @@ In Ansible, when connecting to an external API, especially in the creation of in
 +
 image::lab2_000009_template_credentials.png[]
 +
+<<<<<<< HEAD
+=======
+* *Instance Groups*: select `Tower`
+>>>>>>> parent of 47f8cde... Update ansible_lab_2.adoc
 * *Extra Variables*: In the extra variable field, please add the following, verbatim:
 +
 `siduser: "{{ tower_user_name }}"`
