@@ -103,7 +103,7 @@ vpc_subnet: "subnet-3964a275"
 
 ----
 
-[Note] 
+[NOTE] 
 ====
 By default ansible vault uses VI as a text editor, to exit VI text editor use :q!
 ====
