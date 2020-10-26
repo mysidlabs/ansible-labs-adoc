@@ -201,7 +201,7 @@ By default ansible vault uses VI as a text editor, to exit VI text editor use :q
 [source,bash]
 [subs="verbatim,attributes"]
 ----
-$> ansible-playbook create.yaml
+$> ansible-playbook create.yaml --ask-vault-pass
 ----
 +
 If the play is successful you will see output as the playbook executes ending with something similar to the following:
