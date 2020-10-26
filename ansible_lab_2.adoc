@@ -90,7 +90,7 @@ We will look at Inventories and Templates in more detail through the course of t
 +
 Begin by navigating to the _Projects_ view and click on the `sidlab-windows` lab link to review its settings.
 +
-image::lab2_000003_review_project.png[]
+image::lab2_000003_review_project_v2.png[]
 +
 Review the _New Project_ form taking note of the following information:
 +
@@ -109,7 +109,7 @@ Make sure  *`sid-org`* is the organization used for all of the exercises in thes
 ** Clean
 ** Delete on Update
 ** Update Revision on Launch
-.. Click the image:icons/save-button.png[] button - your newly created project will be added to the project list at the bottom of the page.
+//.. Click the image:icons/save-button.png[] button - your newly created project will be added to the project list at the bottom of the page.
 +
 image::lab2_000004_project_form.png[]
 +
