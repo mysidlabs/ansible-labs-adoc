@@ -111,7 +111,7 @@ Make sure  *`sid-org`* is the organization used for all of the exercises in thes
 ** Update Revision on Launch
 //.. Click the image:icons/save-button.png[] button - your newly created project will be added to the project list at the bottom of the page.
 +
-image::lab2_000004_project_form.png[]
+image::lab2_000004_project_form_v2.png[]
 +
 //Create Inventory
 . *Create an Inventory*
