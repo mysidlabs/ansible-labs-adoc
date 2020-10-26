@@ -227,7 +227,7 @@ Execute the _configure.yaml_ play with the following command using the `-i` flag
 [source,bash]
 [subs="verbatim,attributes"]
 ----
-$> ansible-playbook configure.yaml -i inv.txt
+$> ansible-playbook configure.yaml -i inv.txt --ask-vault-pass
 ----
 +
 In the event that a play does not complete successfully, the output will return with a an error and provide the error message returned by the failed process on the target host.
