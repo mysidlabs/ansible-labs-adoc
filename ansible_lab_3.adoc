@@ -160,11 +160,11 @@ image:lab3_insert_link_mouseover.png[]
 * Make sure `On Success` is selected for _RUN_.
 * Click the image:icons/select-button.png[] button to add the node to the workflow.
 
-+
 image:lab3_workflow_node5_wait_for_ssh.png[]
 
 image:lab3_workflow_execution_view.png[]
 
-Save and launch the workflow
+* Save and launch the workflow
++
 
 === Lab 3 Completed - Congrats!
