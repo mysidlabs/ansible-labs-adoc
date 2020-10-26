@@ -167,4 +167,4 @@ image:lab3_workflow_execution_view.png[]
 
 Save and launch the workflow
 
-Congrats!
+=== Lab 3 Completed - Congrats!
