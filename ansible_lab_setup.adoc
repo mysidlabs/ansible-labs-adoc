@@ -4,7 +4,7 @@ include::global.adoc[]
 
 === Initial Ansible Lab Setup
 The initial command line portion of the lab will be executed from a bastion host in the lab environment.
-To set up the labs you will need to ssh into `{jumphost}` and execue the lab setup command.
+To set up the labs you will need to ssh into `{jumphost}` and execute the lab setup command.
 
 
 [source,bash]
