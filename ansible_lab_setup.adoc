@@ -51,7 +51,7 @@ This will create the following directory structure in your /home/{userid} direct
 [source,bash]
 [subs="verbatim,attributes"]
 ----
-{prompt} tree -L 2
+siduser270@toolkit ~ # tree -L 2
 .
 └── dev
     ├── ansible
