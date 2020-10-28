@@ -1,6 +1,12 @@
 :sectnums:
 include::global.adoc[]
 
+:userid: siduser###
+:userpassword: sid
+:jumphost: jump.mysidlabs.com
+:jumphostname: jump
+:prompt: {userid}@{jumphostname}:~$ 
+
 
 === Initial Ansible Lab Setup
 The initial command line portion of the lab will be executed from a bastion host in the lab environment.
